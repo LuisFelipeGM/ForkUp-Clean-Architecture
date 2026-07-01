@@ -36,7 +36,7 @@ public class Restaurante {
         this.cardapio.add(item);
     }
 
-    private static void validarNome(String nome) {
+    private void validarNome(String nome) {
         if (nome == null || nome.isBlank())
             throw new RestauranteInvalidoException("Nome do restaurante é obrigatório.");
 
@@ -44,22 +44,22 @@ public class Restaurante {
             throw new RestauranteInvalidoException("Nome do restaurante deve ter ao menos 2 caracteres.");
     }
 
-    private static void validarTipoCozinha(String tipoCozinha) {
+    private void validarTipoCozinha(String tipoCozinha) {
         if (tipoCozinha == null || tipoCozinha.isBlank())
             throw new RestauranteInvalidoException("Tipo de cozinha é obrigatório.");
     }
 
-    private static void validarHorarioFuncionamento(String horarioFuncionamento) {
+    private void validarHorarioFuncionamento(String horarioFuncionamento) {
         if (horarioFuncionamento == null || horarioFuncionamento.isBlank())
             throw new RestauranteInvalidoException("Horário de funcionamento é obrigatório.");
     }
 
-    private static void validarEndereco(Endereco endereco) {
+    private void validarEndereco(Endereco endereco) {
         if (endereco == null)
             throw new RestauranteInvalidoException("Endereço é obrigatório.");
     }
 
-    private static void validarItemCardapio(ItemCardapio item) {
+    private void validarItemCardapio(ItemCardapio item) {
         if (item == null)
             throw new RestauranteInvalidoException("Item do cardápio é obrigatório.");
     }

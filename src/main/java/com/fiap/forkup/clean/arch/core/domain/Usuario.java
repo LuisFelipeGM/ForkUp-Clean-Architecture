@@ -35,7 +35,7 @@ public class Usuario {
         this.endereco = endereco;
     }
 
-    private static void validarNome(String nome) {
+    private void validarNome(String nome) {
         if (nome == null || nome.isBlank())
             throw new UsuarioInvalidoException("Nome é obrigatório.");
 
@@ -43,7 +43,7 @@ public class Usuario {
             throw new UsuarioInvalidoException("Nome deve ter ao menos 2 caracteres.");
     }
 
-    private static void validarEmail(String email) {
+    private void validarEmail(String email) {
         if (email == null || email.isBlank())
             throw new UsuarioInvalidoException("Email é obrigatório.");
 
@@ -51,7 +51,7 @@ public class Usuario {
             throw new UsuarioInvalidoException("Email inválido.");
     }
 
-    private static void validarLogin(String login) {
+    private void validarLogin(String login) {
         if (login == null || login.isBlank())
             throw new UsuarioInvalidoException("Login é obrigatório.");
 
@@ -62,7 +62,7 @@ public class Usuario {
             throw new UsuarioInvalidoException("Login deve ter ao menos 3 caracteres.");
     }
 
-    private static void validarSenha(String senha) {
+    private void validarSenha(String senha) {
         if (senha == null || senha.isBlank())
             throw new UsuarioInvalidoException("Senha é obrigatória.");
 

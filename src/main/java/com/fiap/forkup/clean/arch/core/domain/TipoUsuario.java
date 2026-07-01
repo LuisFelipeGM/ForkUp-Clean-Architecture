@@ -25,13 +25,12 @@ public class TipoUsuario {
         this.descricao = novaDescricao.trim();
     }
 
-    private static void validarDescricao(String descricao) {
-        if (descricao == null || descricao.isBlank()) {
+    private void validarDescricao(String descricao) {
+        if (descricao == null || descricao.isBlank())
             throw new TipoUsuarioInvalidoException("Descrição do tipo de usuário não pode ser nula ou vazia.");
-        }
-        if (descricao.trim().length() > 50) {
+
+        if (descricao.trim().length() > 50)
             throw new TipoUsuarioInvalidoException("Descrição do tipo deve ter no máximo 50 caracteres.");
-        }
     }
 
 }

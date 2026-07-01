@@ -31,7 +31,7 @@ public class ItemCardapio {
         this.pathFoto = pathFoto;
     }
 
-    private static void validarNome(String nome) {
+    private void validarNome(String nome) {
         if (nome == null || nome.isBlank())
             throw new ItemCardapioException("Nome do item do cardápio não pode ser nulo ou vazio.");
 
@@ -39,12 +39,12 @@ public class ItemCardapio {
             throw new ItemCardapioException("Nome do item do cardápio deve ter ao menos 2 caracteres.");
     }
 
-    private static void validarDescricao(String descricao) {
+    private void validarDescricao(String descricao) {
         if (descricao != null && descricao.isBlank())
             throw new ItemCardapioException("Descrição do item do cardápio não pode ser vazia.");
     }
 
-    private static void validarPreco(BigDecimal preco) {
+    private void validarPreco(BigDecimal preco) {
         if (preco == null)
             throw new ItemCardapioException("Preço do item do cardápio é obrigatório.");
 
@@ -52,12 +52,12 @@ public class ItemCardapio {
             throw new ItemCardapioException("Preço do item do cardápio deve ser maior que zero.");
     }
 
-    private static void validarApenasRestaurante(Boolean apenasRestaurante) {
+    private void validarApenasRestaurante(Boolean apenasRestaurante) {
         if (apenasRestaurante == null)
             throw new ItemCardapioException("É necessário informar se o item é exclusivo do restaurante.");
     }
 
-    private static void validarPathFoto(String pathFoto) {
+    private void validarPathFoto(String pathFoto) {
         if (pathFoto == null || pathFoto.isBlank())
             throw new ItemCardapioException("Foto do item do cardápio é obrigatório.");
     }

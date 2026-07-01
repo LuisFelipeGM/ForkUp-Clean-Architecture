@@ -25,27 +25,27 @@ public class Endereco {
         this.cep = normalizarCep(cep);
     }
 
-    private static void validarLogradouro(String logradouro) {
+    private void validarLogradouro(String logradouro) {
         if (logradouro == null || logradouro.isBlank())
             throw new EnderecoInvalidoException("Logradouro é obrigatório.");
     }
 
-    private static void validarNumero(String numero) {
+    private void validarNumero(String numero) {
         if (numero == null || numero.isBlank())
             throw new EnderecoInvalidoException("Número é obrigatório.");
     }
 
-    private static void validarCidade(String cidade) {
+    private void validarCidade(String cidade) {
         if (cidade == null || cidade.isBlank())
             throw new EnderecoInvalidoException("Cidade é obrigatória.");
     }
 
-    private static void validarCep(String cep) {
+    private void validarCep(String cep) {
         if (cep == null || !cep.replaceAll("\\D", "").matches("\\d{8}"))
             throw new EnderecoInvalidoException("CEP inválido.");
     }
 
-    private static String normalizarCep(String cep) {
+    private String normalizarCep(String cep) {
         return cep.replaceAll("\\D", "");
     }
 }
