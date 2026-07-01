@@ -1,6 +1,6 @@
 package com.fiap.forkup.clean.arch.core.domain;
 
-import com.fiap.forkup.clean.arch.core.exception.ItemCardapioException;
+import com.fiap.forkup.clean.arch.core.exception.ItemCardapioInvalidoException;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -33,33 +33,33 @@ public class ItemCardapio {
 
     private void validarNome(String nome) {
         if (nome == null || nome.isBlank())
-            throw new ItemCardapioException("Nome do item do cardápio não pode ser nulo ou vazio.");
+            throw new ItemCardapioInvalidoException("Nome do item do cardápio não pode ser nulo ou vazio.");
 
         if (nome.trim().length() < 2)
-            throw new ItemCardapioException("Nome do item do cardápio deve ter ao menos 2 caracteres.");
+            throw new ItemCardapioInvalidoException("Nome do item do cardápio deve ter ao menos 2 caracteres.");
     }
 
     private void validarDescricao(String descricao) {
         if (descricao != null && descricao.isBlank())
-            throw new ItemCardapioException("Descrição do item do cardápio não pode ser vazia.");
+            throw new ItemCardapioInvalidoException("Descrição do item do cardápio não pode ser vazia.");
     }
 
     private void validarPreco(BigDecimal preco) {
         if (preco == null)
-            throw new ItemCardapioException("Preço do item do cardápio é obrigatório.");
+            throw new ItemCardapioInvalidoException("Preço do item do cardápio é obrigatório.");
 
         if (preco.compareTo(BigDecimal.ZERO) <= 0)
-            throw new ItemCardapioException("Preço do item do cardápio deve ser maior que zero.");
+            throw new ItemCardapioInvalidoException("Preço do item do cardápio deve ser maior que zero.");
     }
 
     private void validarApenasRestaurante(Boolean apenasRestaurante) {
         if (apenasRestaurante == null)
-            throw new ItemCardapioException("É necessário informar se o item é exclusivo do restaurante.");
+            throw new ItemCardapioInvalidoException("É necessário informar se o item é exclusivo do restaurante.");
     }
 
     private void validarPathFoto(String pathFoto) {
         if (pathFoto == null || pathFoto.isBlank())
-            throw new ItemCardapioException("Foto do item do cardápio é obrigatório.");
+            throw new ItemCardapioInvalidoException("Foto do item do cardápio é obrigatório.");
     }
 
 }
