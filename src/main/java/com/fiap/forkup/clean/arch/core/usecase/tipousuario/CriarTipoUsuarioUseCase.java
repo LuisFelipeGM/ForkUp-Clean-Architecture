@@ -3,13 +3,13 @@ package com.fiap.forkup.clean.arch.core.usecase.tipousuario;
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
 import com.fiap.forkup.clean.arch.core.exception.TipoUsuarioJaCadastradoException;
 import com.fiap.forkup.clean.arch.core.gateway.TipoUsuarioGateway;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.UUID;
 
 @Slf4j
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CriarTipoUsuarioUseCase {
 
     private final TipoUsuarioGateway tipoUsuarioGateway;
