@@ -13,11 +13,11 @@ public class TipoUsuario {
     private String descricao;
     private LocalDateTime criadoEm;
 
-    public TipoUsuario(UUID id, String descricao, LocalDateTime criadoEm) {
+    public TipoUsuario(UUID id, String descricao) {
         validarDescricao(descricao);
         this.id = id;
         this.descricao = descricao;
-        this.criadoEm = criadoEm;
+        this.criadoEm = LocalDateTime.now();
     }
 
     public void alterarDescricao(String novaDescricao) {
