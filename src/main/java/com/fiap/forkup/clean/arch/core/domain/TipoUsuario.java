@@ -20,6 +20,10 @@ public class TipoUsuario {
         this.criadoEm = LocalDateTime.now();
     }
 
+    public TipoUsuario(String descricao) {
+        this(UUID.randomUUID(), descricao);
+    }
+
     public void alterarDescricao(String novaDescricao) {
         validarDescricao(novaDescricao);
         this.descricao = novaDescricao.trim();

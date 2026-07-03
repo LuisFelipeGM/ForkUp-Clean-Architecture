@@ -1,5 +1,6 @@
 package com.fiap.forkup.clean.arch.core.usecase.tipousuario;
 
+import com.fiap.forkup.clean.arch.core.exception.TipoUsuarioComUsuarioVinculadoException;
 import com.fiap.forkup.clean.arch.core.exception.TipoUsuarioNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.TipoUsuarioGateway;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ public class DeletarTipoUsuarioUseCase {
 
         if (tipoUsuarioGateway.existsUsuarioComEsteTipo(id)) {
             log.error("Não é possível excluir o tipo de usuário com ID: {} pois existem usuários associados a ele.", id);
-            throw new IllegalStateException("Não é possível excluir o tipo de usuário pois existem usuários associados a ele.");
+            throw new TipoUsuarioComUsuarioVinculadoException("Não é possível excluir o tipo de usuário pois existem usuários associados a ele.");
         }
     }
 
