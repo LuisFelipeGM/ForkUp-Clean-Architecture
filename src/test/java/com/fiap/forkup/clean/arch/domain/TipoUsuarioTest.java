@@ -15,22 +15,32 @@ public class TipoUsuarioTest {
     @Test
     @DisplayName("Deve criar um TipoUsuario válido")
     void deveCriarTipoUsuarioValido() {
-        TipoUsuario tipoUsuario = new TipoUsuario(UUID.randomUUID(), "Cliente");
+        UUID id = UUID.randomUUID();
+        String descricao = "Cliente";
+
+        TipoUsuario tipoUsuario = new TipoUsuario(id, descricao);
 
         assertNotNull(tipoUsuario);
         assertNotNull(tipoUsuario.getId());
-        assertEquals("Cliente", tipoUsuario.getDescricao());
+        assertEquals(id, tipoUsuario.getId());
+        assertEquals(descricao, tipoUsuario.getDescricao());
         assertNotNull(tipoUsuario.getCriadoEm());
     }
 
     @Test
     @DisplayName("Deve alterar a descrição de um TipoUsuario com sucesso")
     void deveAlterarComSucessoDescricaoTipoUsuario() {
-        TipoUsuario tipoUsuario = new TipoUsuario(UUID.randomUUID(), "Cliente");
+        UUID id = UUID.randomUUID();
+        String descricao = "Cliente";
 
-        tipoUsuario.alterarDescricao("Consumidor");
+        TipoUsuario tipoUsuario = new TipoUsuario(id, descricao);
 
-        assertEquals("Consumidor", tipoUsuario.getDescricao());
+        String novaDescricao = "Consumidor";
+
+        tipoUsuario.alterarDescricao(novaDescricao);
+
+        assertEquals(novaDescricao, tipoUsuario.getDescricao());
+        assertNotEquals(descricao, tipoUsuario.getDescricao());
     }
 
     @Test
