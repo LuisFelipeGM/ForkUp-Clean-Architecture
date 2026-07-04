@@ -19,6 +19,8 @@ public interface UsuarioGateway {
 
     boolean existsUsuario(UUID id);
 
+    boolean existsUsuarioGerente(UUID id);
+
     boolean existsRestauranteVinculadoUsuario(UUID id);
 
     boolean existsUsuarioComEsteLoginAndIdNot(String login, UUID id);

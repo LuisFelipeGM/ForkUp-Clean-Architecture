@@ -16,7 +16,7 @@ public class BuscarTipoUsuarioPorIdUseCase {
 
     private final TipoUsuarioMapper tipoUsuarioMapper;
 
-    public TipoUsuarioReponse executar(UUID id) {
+    public TipoUsuarioReponse execute(UUID id) {
         TipoUsuario tipoUsuario = tipoUsuarioGateway.buscarPorId(id).orElseThrow(() -> new TipoUsuarioNaoEncontradoException("Tipo Usuário não encontrado"));
         return tipoUsuarioMapper.domainToDto(tipoUsuario);
     }

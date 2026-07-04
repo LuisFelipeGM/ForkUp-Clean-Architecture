@@ -11,7 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -29,14 +31,14 @@ public class ListarTiposUsuarioUseCaseTest {
     @Test
     @DisplayName("Deve listar todos os TiposUsuario com sucesso")
     void deveListarTodosOsTiposUsuarioComSucesso() {
-        TipoUsuario tipoUsuario1 = new TipoUsuario("Cliente");
-        TipoUsuario tipoUsuario2 = new TipoUsuario("Dono do Restaurante");
+        TipoUsuario tipoUsuario1 = new TipoUsuario(UUID.randomUUID(),"Cliente", LocalDateTime.now());
+        TipoUsuario tipoUsuario2 = new TipoUsuario(UUID.randomUUID(),"Dono do Restaurante", LocalDateTime.now());
 
         List<TipoUsuario> tiposUsuario = List.of(tipoUsuario1, tipoUsuario2);
 
         when(tipoUsuarioGateway.listarTodos()).thenReturn(tiposUsuario);
 
-        List<TipoUsuarioReponse> resultado = listarTiposUsuarioUseCase.executar();
+        List<TipoUsuarioReponse> resultado = listarTiposUsuarioUseCase.execute();
 
         assertEquals(tiposUsuario.size(), resultado.size());
         assertEquals(tiposUsuario.getFirst().getDescricao(), resultado.getFirst().descricao());
@@ -50,7 +52,7 @@ public class ListarTiposUsuarioUseCaseTest {
 
         when(tipoUsuarioGateway.listarTodos()).thenReturn(tiposUsuario);
 
-        List<TipoUsuarioReponse> resultado = listarTiposUsuarioUseCase.executar();
+        List<TipoUsuarioReponse> resultado = listarTiposUsuarioUseCase.execute();
 
         assertEquals(0, resultado.size());
     }

@@ -23,10 +23,9 @@ public class AlterarUsuarioUseCase {
 
     private EnderecoMapper enderecoMapper;
 
-    public UsuarioReponseFull executar(final UUID id, final UpdateUsuarioRequest updateUsuarioRequest) {
-        Usuario usuario = usuarioGateway.buscarPorId(id).orElseThrow(() -> {
-            throw new UsuarioNaoEncontradoException("Usuário não encontrado");
-        });
+    public UsuarioReponseFull execute(final UUID id, final UpdateUsuarioRequest updateUsuarioRequest) {
+        Usuario usuario = usuarioGateway.buscarPorId(id)
+                .orElseThrow(() -> new UsuarioNaoEncontradoException("Usuário não encontrado"));
 
         validarUpdate(id, updateUsuarioRequest);
 
