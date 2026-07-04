@@ -1,6 +1,5 @@
 package com.fiap.forkup.clean.arch.core.usecase.tipousuario;
 
-import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
 import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioReponse;
 import com.fiap.forkup.clean.arch.core.gateway.TipoUsuarioGateway;
 import com.fiap.forkup.clean.arch.core.mapper.TipoUsuarioMapper;
@@ -18,7 +17,7 @@ public class ListarTiposUsuarioUseCase {
 
     private final TipoUsuarioMapper tipoUsuarioMapper;
 
-    public List<TipoUsuarioReponse> executar() {
+    public List<TipoUsuarioReponse> execute() {
         return tipoUsuarioGateway.listarTodos()
                 .stream()
                 .map(tipoUsuarioMapper::domainToDto)

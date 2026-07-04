@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -33,11 +34,11 @@ public class BuscarTipoUsuarioPorIdUseCaseTest {
     @DisplayName("Deve retornar um TipoUsuario por ID com sucesso")
     void deveRetornarTipoUsuarioPorIdComSucesso() {
         UUID id = UUID.randomUUID();
-        TipoUsuario tipoUsuario = new TipoUsuario(id, "Cliente");
+        TipoUsuario tipoUsuario = new TipoUsuario(id, "Cliente", LocalDateTime.now());
 
         when(tipoUsuarioGateway.buscarPorId(id)).thenReturn(Optional.of(tipoUsuario));
 
-        TipoUsuarioReponse retorno = buscarTipoUsuarioPorIdUseCase.executar(id);
+        TipoUsuarioReponse retorno = buscarTipoUsuarioPorIdUseCase.execute(id);
 
         assertNotNull(retorno);
         assertEquals(tipoUsuario.getId(), retorno.id());
@@ -52,7 +53,7 @@ public class BuscarTipoUsuarioPorIdUseCaseTest {
 
         when(tipoUsuarioGateway.buscarPorId(id)).thenReturn(Optional.empty());
 
-        TipoUsuarioNaoEncontradoException exception = assertThrows(TipoUsuarioNaoEncontradoException.class, () -> buscarTipoUsuarioPorIdUseCase.executar(id));
+        TipoUsuarioNaoEncontradoException exception = assertThrows(TipoUsuarioNaoEncontradoException.class, () -> buscarTipoUsuarioPorIdUseCase.execute(id));
 
         assertEquals("Tipo Usuário não encontrado", exception.getMessage());
         verify(tipoUsuarioGateway, times(1)).buscarPorId(id);

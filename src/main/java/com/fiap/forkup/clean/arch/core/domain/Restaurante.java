@@ -1,11 +1,13 @@
 package com.fiap.forkup.clean.arch.core.domain;
 
 import com.fiap.forkup.clean.arch.core.exception.RestauranteInvalidoException;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Getter
 public class Restaurante {
 
     private UUID id;
@@ -13,10 +15,10 @@ public class Restaurante {
     private String tipoCozinha;
     private String horarioFuncionamento;
     private Endereco endereco;
-    private UUID dono;
+    private UUID gerente;
     private List<ItemCardapio> cardapio;
 
-    public Restaurante(UUID id, String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco, UUID dono) {
+    public Restaurante(UUID id, String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco, UUID gerente) {
         validarNome(nome);
         validarTipoCozinha(tipoCozinha);
         validarHorarioFuncionamento(horarioFuncionamento);
@@ -27,13 +29,29 @@ public class Restaurante {
         this.tipoCozinha = tipoCozinha;
         this.horarioFuncionamento = horarioFuncionamento;
         this.endereco = endereco;
-        this.dono = dono;
+        this.gerente = gerente;
         this.cardapio = new ArrayList<>();
     }
 
     public void adicionarItemCardapio(ItemCardapio item) {
         validarItemCardapio(item);
         this.cardapio.add(item);
+    }
+
+    public void alterarRestaurante(String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco) {
+        validarNome(nome);
+        validarTipoCozinha(tipoCozinha);
+        validarHorarioFuncionamento(horarioFuncionamento);
+        validarEndereco(endereco);
+
+        this.nome = nome;
+        this.tipoCozinha = tipoCozinha;
+        this.horarioFuncionamento = horarioFuncionamento;
+        this.endereco = endereco;
+    }
+
+    public void alterarGerente(UUID idGerente) {
+        this.gerente = idGerente;
     }
 
     private void validarNome(String nome) {
