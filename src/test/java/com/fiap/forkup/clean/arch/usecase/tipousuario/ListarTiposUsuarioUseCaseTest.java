@@ -1,6 +1,7 @@
 package com.fiap.forkup.clean.arch.usecase.tipousuario;
 
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
+import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioReponse;
 import com.fiap.forkup.clean.arch.core.gateway.TipoUsuarioGateway;
 import com.fiap.forkup.clean.arch.core.usecase.tipousuario.ListarTiposUsuarioUseCase;
 import org.junit.jupiter.api.DisplayName;
@@ -35,11 +36,11 @@ public class ListarTiposUsuarioUseCaseTest {
 
         when(tipoUsuarioGateway.listarTodos()).thenReturn(tiposUsuario);
 
-        List<TipoUsuario> resultado = listarTiposUsuarioUseCase.executar();
+        List<TipoUsuarioReponse> resultado = listarTiposUsuarioUseCase.executar();
 
         assertEquals(tiposUsuario.size(), resultado.size());
-        assertEquals(tiposUsuario.getFirst().getDescricao(), resultado.getFirst().getDescricao());
-        assertEquals(tiposUsuario.getLast().getDescricao(), resultado.getLast().getDescricao());
+        assertEquals(tiposUsuario.getFirst().getDescricao(), resultado.getFirst().descricao());
+        assertEquals(tiposUsuario.getLast().getDescricao(), resultado.getLast().descricao());
     }
 
     @Test
@@ -49,7 +50,7 @@ public class ListarTiposUsuarioUseCaseTest {
 
         when(tipoUsuarioGateway.listarTodos()).thenReturn(tiposUsuario);
 
-        List<TipoUsuario> resultado = listarTiposUsuarioUseCase.executar();
+        List<TipoUsuarioReponse> resultado = listarTiposUsuarioUseCase.executar();
 
         assertEquals(0, resultado.size());
     }

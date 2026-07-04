@@ -18,10 +18,10 @@ public class Usuario {
     private String email;
     private String login;
     private String senha;
-    private UUID tipoUsuario;
+    private TipoUsuario tipoUsuario;
     private Endereco endereco;
 
-    public Usuario(UUID id, String nome, String email, String login, String senha, UUID tipoUsuario, Endereco endereco) {
+    public Usuario(UUID id, String nome, String email, String login, String senha, TipoUsuario tipoUsuario, Endereco endereco) {
         validarNome(nome);
         validarEmail(email);
         validarLogin(login);
@@ -33,6 +33,20 @@ public class Usuario {
         this.senha = senha;
         this.tipoUsuario = tipoUsuario;
         this.endereco = endereco;
+    }
+
+    public void atualizarUsuario(String nome, String email, String login, Endereco endereco) {
+        validarNome(nome);
+        validarEmail(email);
+        validarSenha(senha);
+        this.nome = nome;
+        this.email = email;
+        this.login = login;
+        this.endereco = endereco;
+    }
+
+    public void atualizarTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
     }
 
     private void validarNome(String nome) {

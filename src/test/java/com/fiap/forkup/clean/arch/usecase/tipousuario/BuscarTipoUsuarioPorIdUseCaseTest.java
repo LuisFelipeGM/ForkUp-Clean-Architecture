@@ -1,6 +1,7 @@
 package com.fiap.forkup.clean.arch.usecase.tipousuario;
 
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
+import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioReponse;
 import com.fiap.forkup.clean.arch.core.exception.TipoUsuarioNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.TipoUsuarioGateway;
 import com.fiap.forkup.clean.arch.core.usecase.tipousuario.BuscarTipoUsuarioPorIdUseCase;
@@ -36,11 +37,11 @@ public class BuscarTipoUsuarioPorIdUseCaseTest {
 
         when(tipoUsuarioGateway.buscarPorId(id)).thenReturn(Optional.of(tipoUsuario));
 
-        TipoUsuario retorno = buscarTipoUsuarioPorIdUseCase.executar(id);
+        TipoUsuarioReponse retorno = buscarTipoUsuarioPorIdUseCase.executar(id);
 
         assertNotNull(retorno);
-        assertEquals(tipoUsuario.getId(), retorno.getId());
-        assertEquals(tipoUsuario.getDescricao(), retorno.getDescricao());
+        assertEquals(tipoUsuario.getId(), retorno.id());
+        assertEquals(tipoUsuario.getDescricao(), retorno.descricao());
         verify(tipoUsuarioGateway, times(1)).buscarPorId(id);
     }
 
