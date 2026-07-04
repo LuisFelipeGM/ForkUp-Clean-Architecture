@@ -2,10 +2,12 @@ package com.fiap.forkup.clean.arch.core.mapper;
 
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
 import com.fiap.forkup.clean.arch.core.domain.Usuario;
-import com.fiap.forkup.clean.arch.core.dto.CreateUsuarioRequest;
+import com.fiap.forkup.clean.arch.core.dto.UsuarioRequestCreate;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioReponseFull;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioResponsePartial;
 import lombok.AllArgsConstructor;
+
+import java.util.UUID;
 
 @AllArgsConstructor
 public class UsuarioMapper {
@@ -14,9 +16,9 @@ public class UsuarioMapper {
 
     private TipoUsuarioMapper tipoUsuarioMapper;
 
-    public Usuario requestToDomain(CreateUsuarioRequest request, TipoUsuario tipoUsuario) {
+    public Usuario requestToDomain(UsuarioRequestCreate request, TipoUsuario tipoUsuario) {
         return new Usuario(
-                null,
+                UUID.randomUUID(),
                 request.nome(),
                 request.email(),
                 request.login(),

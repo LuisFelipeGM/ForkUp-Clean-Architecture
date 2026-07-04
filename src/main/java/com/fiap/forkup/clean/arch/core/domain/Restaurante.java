@@ -1,5 +1,6 @@
 package com.fiap.forkup.clean.arch.core.domain;
 
+import com.fiap.forkup.clean.arch.core.exception.ItemCardapioNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.exception.RestauranteInvalidoException;
 import lombok.Getter;
 
@@ -36,6 +37,16 @@ public class Restaurante {
     public void adicionarItemCardapio(ItemCardapio item) {
         validarItemCardapio(item);
         this.cardapio.add(item);
+    }
+
+    public void atualizarItemCardapio(UUID itemId, ItemCardapio novoItem) {
+
+        ItemCardapio item = cardapio.stream()
+                .filter(i -> i.getId().equals(itemId))
+                .findFirst()
+                .orElseThrow(() -> new ItemCardapioNaoEncontradoException("Item do cardápio não encontrado."));
+
+        item.atualizar(novoItem);
     }
 
     public void alterarRestaurante(String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco) {

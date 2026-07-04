@@ -1,11 +1,8 @@
 package com.fiap.forkup.clean.arch.core.dto;
 
-import java.util.UUID;
-
-public record CreateRestauranteRequest(
+public record RestauranteRequestUpdate(
         String nome,
         String tipoCozinha,
         String horarioFuncionamento,
-        UUID gerenteId,
         EnderecoRequest endereco
 ) { }

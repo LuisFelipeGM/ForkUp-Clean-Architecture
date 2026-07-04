@@ -3,21 +3,25 @@ package com.fiap.forkup.clean.arch.core.domain;
 import com.fiap.forkup.clean.arch.core.exception.EnderecoInvalidoException;
 import lombok.Getter;
 
+import java.util.UUID;
+
 @Getter
 public class Endereco {
 
+    private UUID id;
     private String logradouro;
     private String numero;
     private String complemento;
     private String cidade;
     private String cep;
 
-    public Endereco(String logradouro, String numero, String complemento, String cidade, String cep) {
+    public Endereco(UUID id, String logradouro, String numero, String complemento, String cidade, String cep) {
         validarLogradouro(logradouro);
         validarNumero(numero);
         validarCidade(cidade);
         validarCep(cep);
 
+        this.id = id;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento =  complemento != null ? complemento.trim() : null;

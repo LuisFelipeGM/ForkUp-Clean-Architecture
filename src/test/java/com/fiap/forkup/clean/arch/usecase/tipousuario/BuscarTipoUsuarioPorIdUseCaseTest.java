@@ -4,6 +4,7 @@ import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
 import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioReponse;
 import com.fiap.forkup.clean.arch.core.exception.TipoUsuarioNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.TipoUsuarioGateway;
+import com.fiap.forkup.clean.arch.core.mapper.TipoUsuarioMapper;
 import com.fiap.forkup.clean.arch.core.usecase.tipousuario.BuscarTipoUsuarioPorIdUseCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -34,11 +35,15 @@ public class BuscarTipoUsuarioPorIdUseCaseTest {
     @DisplayName("Deve retornar um TipoUsuario por ID com sucesso")
     void deveRetornarTipoUsuarioPorIdComSucesso() {
         UUID id = UUID.randomUUID();
-        TipoUsuario tipoUsuario = new TipoUsuario(id, "Cliente", LocalDateTime.now());
+        TipoUsuario tipoUsuario = new TipoUsuario(id, "Cliente");
+
+        TipoUsuarioMapper tipoUsuarioMapper = new TipoUsuarioMapper();
+
+        BuscarTipoUsuarioPorIdUseCase useCase = new BuscarTipoUsuarioPorIdUseCase(tipoUsuarioGateway, tipoUsuarioMapper);
 
         when(tipoUsuarioGateway.buscarPorId(id)).thenReturn(Optional.of(tipoUsuario));
 
-        TipoUsuarioReponse retorno = buscarTipoUsuarioPorIdUseCase.execute(id);
+        TipoUsuarioReponse retorno = useCase.execute(id);
 
         assertNotNull(retorno);
         assertEquals(tipoUsuario.getId(), retorno.id());
@@ -51,9 +56,13 @@ public class BuscarTipoUsuarioPorIdUseCaseTest {
     void deveLancarExcecaoTipoUsuarioNaoEncontrado() {
         UUID id = UUID.randomUUID();
 
+        TipoUsuarioMapper tipoUsuarioMapper = new TipoUsuarioMapper();
+
+        BuscarTipoUsuarioPorIdUseCase useCase = new BuscarTipoUsuarioPorIdUseCase(tipoUsuarioGateway, tipoUsuarioMapper);
+
         when(tipoUsuarioGateway.buscarPorId(id)).thenReturn(Optional.empty());
 
-        TipoUsuarioNaoEncontradoException exception = assertThrows(TipoUsuarioNaoEncontradoException.class, () -> buscarTipoUsuarioPorIdUseCase.execute(id));
+        TipoUsuarioNaoEncontradoException exception = assertThrows(TipoUsuarioNaoEncontradoException.class, () -> useCase.execute(id));
 
         assertEquals("Tipo Usuário não encontrado", exception.getMessage());
         verify(tipoUsuarioGateway, times(1)).buscarPorId(id);

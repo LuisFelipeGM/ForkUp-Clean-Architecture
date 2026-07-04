@@ -31,6 +31,14 @@ public class ItemCardapio {
         this.pathFoto = pathFoto;
     }
 
+    public void atualizar(ItemCardapio novoItem) {
+        this.nome = novoItem.getNome();
+        this.descricao = novoItem.getDescricao();
+        this.preco = novoItem.getPreco();
+        this.apenasRestaurante = novoItem.getApenasRestaurante();
+        this.pathFoto = novoItem.getPathFoto();
+    }
+
     private void validarNome(String nome) {
         if (nome == null || nome.isBlank())
             throw new ItemCardapioInvalidoException("Nome do item do cardápio não pode ser nulo ou vazio.");
