@@ -31,7 +31,7 @@ public class RestauranteMapper {
                 restaurante.getTipoCozinha(),
                 restaurante.getHorarioFuncionamento(),
                 nomeGerente,
-                enderecoMapper.doaminToDto(restaurante.getEndereco())
+                enderecoMapper.domainToDto(restaurante.getEndereco())
         );
     }
 

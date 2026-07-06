@@ -21,8 +21,9 @@ public class EnderecoMapper {
         );
     }
 
-    public EnderecoResponse doaminToDto(Endereco endereco) {
+    public EnderecoResponse domainToDto(Endereco endereco) {
         return new EnderecoResponse(
+                endereco.getId(),
                 endereco.getLogradouro(),
                 endereco.getNumero(),
                 endereco.getComplemento(),

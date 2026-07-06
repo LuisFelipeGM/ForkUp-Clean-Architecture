@@ -35,7 +35,7 @@ public class UsuarioMapper {
                 usuario.getEmail(),
                 usuario.getLogin(),
                 tipoUsuarioMapper.domainToDto(usuario.getTipoUsuario()),
-                enderecoMapper.doaminToDto(usuario.getEndereco())
+                enderecoMapper.domainToDto(usuario.getEndereco())
         );
     }
 
