@@ -1,7 +1,7 @@
 package com.fiap.forkup.clean.arch.core.usecase.restaurante;
 
 import com.fiap.forkup.clean.arch.core.domain.Restaurante;
-import com.fiap.forkup.clean.arch.core.dto.CreateRestauranteRequest;
+import com.fiap.forkup.clean.arch.core.dto.RestauranteRequestCreate;
 import com.fiap.forkup.clean.arch.core.exception.UsuarioGerenteNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.RestauranteGateway;
 import com.fiap.forkup.clean.arch.core.gateway.UsuarioGateway;
@@ -19,16 +19,16 @@ public class CriarRestauranteUseCase {
 
     private final RestauranteMapper restauranteMapper;
 
-    public UUID execute(final CreateRestauranteRequest createRestauranteRequest) {
-        validarCriacao(createRestauranteRequest);
+    public UUID execute(final RestauranteRequestCreate restauranteRequestCreate) {
+        validarCriacao(restauranteRequestCreate);
 
-        Restaurante restaurante = restauranteMapper.requestToDomain(createRestauranteRequest);
+        Restaurante restaurante = restauranteMapper.requestToDomain(restauranteRequestCreate);
 
        return restauranteGateway.criar(restaurante);
     }
 
-    private void validarCriacao(final CreateRestauranteRequest createRestauranteRequest) {
-        if (!usuarioGateway.existsUsuarioGerente(createRestauranteRequest.gerenteId())) {
+    private void validarCriacao(final RestauranteRequestCreate restauranteRequestCreate) {
+        if (!usuarioGateway.existsUsuarioGerente(restauranteRequestCreate.gerenteId())) {
             throw new UsuarioGerenteNaoEncontradoException("Gerente não encontrado");
         }
     }

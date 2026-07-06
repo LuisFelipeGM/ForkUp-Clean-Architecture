@@ -1,24 +1,26 @@
 package com.fiap.forkup.clean.arch.core.mapper;
 
 import com.fiap.forkup.clean.arch.core.domain.Restaurante;
-import com.fiap.forkup.clean.arch.core.dto.CreateRestauranteRequest;
+import com.fiap.forkup.clean.arch.core.dto.RestauranteRequestCreate;
 import com.fiap.forkup.clean.arch.core.dto.RestauranteResponseFull;
 import com.fiap.forkup.clean.arch.core.dto.RestauranteResponsePartial;
 import lombok.AllArgsConstructor;
+
+import java.util.UUID;
 
 @AllArgsConstructor
 public class RestauranteMapper {
 
     private EnderecoMapper enderecoMapper;
 
-    public Restaurante requestToDomain(CreateRestauranteRequest createRestauranteRequest) {
+    public Restaurante requestToDomain(RestauranteRequestCreate restauranteRequestCreate) {
         return new Restaurante(
-                null,
-                createRestauranteRequest.nome(),
-                createRestauranteRequest.tipoCozinha(),
-                createRestauranteRequest.horarioFuncionamento(),
-                enderecoMapper.toDomain(createRestauranteRequest.endereco()),
-                createRestauranteRequest.gerenteId()
+                UUID.randomUUID(),
+                restauranteRequestCreate.nome(),
+                restauranteRequestCreate.tipoCozinha(),
+                restauranteRequestCreate.horarioFuncionamento(),
+                enderecoMapper.toDomain(restauranteRequestCreate.endereco()),
+                restauranteRequestCreate.gerenteId()
         );
     }
 

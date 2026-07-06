@@ -10,9 +10,9 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ListarRestauranteUseCase {
 
-    private RestauranteGateway restauranteGateway;
+    private final RestauranteGateway restauranteGateway;
 
-    private RestauranteMapper restauranteMapper;
+    private final RestauranteMapper restauranteMapper;
 
     public Pagina<RestauranteResponsePartial> execute(PaginacaoRequest paginacaoRequest) {
         return restauranteGateway

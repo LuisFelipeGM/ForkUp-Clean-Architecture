@@ -15,11 +15,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AlterarTipoDoUsuarioUseCase {
 
-    private UsuarioGateway usuarioGateway;
+    private final UsuarioGateway usuarioGateway;
 
-    private TipoUsuarioGateway tipoUsuarioGateway;
+    private final TipoUsuarioGateway tipoUsuarioGateway;
 
-    private UsuarioMapper usuarioMapper;
+    private final UsuarioMapper usuarioMapper;
 
     public UsuarioReponseFull execute(UUID idUsuario, UUID idTipoUsuario) {
         Usuario usuario = usuarioGateway.buscarPorId(idUsuario).orElseThrow(

@@ -12,9 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 public class ListarUsuariosUseCase {
 
-    private UsuarioGateway usuarioGateway;
+    private final UsuarioGateway usuarioGateway;
 
-    private UsuarioMapper usuarioMapper;
+    private final UsuarioMapper usuarioMapper;
 
     public Pagina<UsuarioResponsePartial> execute(PaginacaoRequest paginacaoRequest) {
         return usuarioGateway

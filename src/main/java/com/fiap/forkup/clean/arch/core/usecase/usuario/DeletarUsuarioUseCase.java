@@ -10,7 +10,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class DeletarUsuarioUseCase {
 
-    private UsuarioGateway usuarioGateway;
+    private final UsuarioGateway usuarioGateway;
 
     public void execute(UUID id) {
         validarExclusao(id);

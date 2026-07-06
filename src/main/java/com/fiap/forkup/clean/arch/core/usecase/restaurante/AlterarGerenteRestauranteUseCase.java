@@ -13,11 +13,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AlterarGerenteRestauranteUseCase {
 
-    private RestauranteGateway restauranteGateway;
+    private final RestauranteGateway restauranteGateway;
 
-    private UsuarioGateway usuarioGateway;
+    private final UsuarioGateway usuarioGateway;
 
-    private RestauranteMapper restauranteMapper;
+    private final RestauranteMapper restauranteMapper;
 
     public RestauranteResponseFull execute(UUID idRestaurante, UUID idGerente) {
         var restaurante = restauranteGateway.buscarPorId(idRestaurante).orElseThrow(() -> {

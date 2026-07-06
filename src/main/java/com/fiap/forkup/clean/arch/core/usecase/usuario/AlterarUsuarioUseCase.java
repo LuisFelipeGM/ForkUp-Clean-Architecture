@@ -2,7 +2,7 @@ package com.fiap.forkup.clean.arch.core.usecase.usuario;
 
 import com.fiap.forkup.clean.arch.core.domain.Endereco;
 import com.fiap.forkup.clean.arch.core.domain.Usuario;
-import com.fiap.forkup.clean.arch.core.dto.UpdateUsuarioRequest;
+import com.fiap.forkup.clean.arch.core.dto.UsuarioRequestUpdate;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioReponseFull;
 import com.fiap.forkup.clean.arch.core.exception.EmailUsuarioJaCadastradoException;
 import com.fiap.forkup.clean.arch.core.exception.LoginUsuarioJaCadastradoException;
@@ -17,32 +17,32 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AlterarUsuarioUseCase {
 
-    private UsuarioGateway usuarioGateway;
+    private final UsuarioGateway usuarioGateway;
 
-    private UsuarioMapper usuarioMapper;
+    private final UsuarioMapper usuarioMapper;
 
-    private EnderecoMapper enderecoMapper;
+    private final EnderecoMapper enderecoMapper;
 
-    public UsuarioReponseFull execute(final UUID id, final UpdateUsuarioRequest updateUsuarioRequest) {
+    public UsuarioReponseFull execute(final UUID id, final UsuarioRequestUpdate usuarioRequestUpdate) {
         Usuario usuario = usuarioGateway.buscarPorId(id)
                 .orElseThrow(() -> new UsuarioNaoEncontradoException("Usuário não encontrado"));
 
-        validarUpdate(id, updateUsuarioRequest);
+        validarUpdate(id, usuarioRequestUpdate);
 
-        Endereco endereco = enderecoMapper.toDomain(updateUsuarioRequest.endereco());
+        Endereco endereco = enderecoMapper.toDomain(usuarioRequestUpdate.endereco());
 
-        usuario.atualizarUsuario(updateUsuarioRequest.nome(), updateUsuarioRequest.email(), updateUsuarioRequest.login(), endereco);
+        usuario.atualizarUsuario(usuarioRequestUpdate.nome(), usuarioRequestUpdate.email(), usuarioRequestUpdate.login(), endereco);
         usuarioGateway.atualizar(usuario);
 
         return usuarioMapper.domainToDtoFull(usuario);
     }
 
-    private void validarUpdate(final UUID id, final UpdateUsuarioRequest updateUsuarioRequest) {
-        if (usuarioGateway.existsUsuarioComEsteLoginAndIdNot(updateUsuarioRequest.login(), id)) {
+    private void validarUpdate(final UUID id, final UsuarioRequestUpdate usuarioRequestUpdate) {
+        if (usuarioGateway.existsUsuarioComEsteLoginAndIdNot(usuarioRequestUpdate.login(), id)) {
             throw new LoginUsuarioJaCadastradoException("Já existe um usuário com este login");
         }
 
-        if (usuarioGateway.exitsUsuarioComEsteEmailAndIdNot(updateUsuarioRequest.email(), id)) {
+        if (usuarioGateway.exitsUsuarioComEsteEmailAndIdNot(usuarioRequestUpdate.email(), id)) {
             throw new EmailUsuarioJaCadastradoException("Já existe um usuário com este email");
         }
     }

@@ -3,6 +3,7 @@ package com.fiap.forkup.clean.arch.usecase.tipousuario;
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
 import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioReponse;
 import com.fiap.forkup.clean.arch.core.gateway.TipoUsuarioGateway;
+import com.fiap.forkup.clean.arch.core.mapper.TipoUsuarioMapper;
 import com.fiap.forkup.clean.arch.core.usecase.tipousuario.ListarTiposUsuarioUseCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,14 +32,18 @@ public class ListarTiposUsuarioUseCaseTest {
     @Test
     @DisplayName("Deve listar todos os TiposUsuario com sucesso")
     void deveListarTodosOsTiposUsuarioComSucesso() {
-        TipoUsuario tipoUsuario1 = new TipoUsuario(UUID.randomUUID(),"Cliente", LocalDateTime.now());
-        TipoUsuario tipoUsuario2 = new TipoUsuario(UUID.randomUUID(),"Dono do Restaurante", LocalDateTime.now());
+        TipoUsuario tipoUsuario1 = new TipoUsuario("Cliente");
+        TipoUsuario tipoUsuario2 = new TipoUsuario("Dono do Restaurante");
 
         List<TipoUsuario> tiposUsuario = List.of(tipoUsuario1, tipoUsuario2);
 
+        TipoUsuarioMapper tipoUsuarioMapper = new TipoUsuarioMapper();
+
+        ListarTiposUsuarioUseCase useCase = new ListarTiposUsuarioUseCase(tipoUsuarioGateway, tipoUsuarioMapper);
+
         when(tipoUsuarioGateway.listarTodos()).thenReturn(tiposUsuario);
 
-        List<TipoUsuarioReponse> resultado = listarTiposUsuarioUseCase.execute();
+        List<TipoUsuarioReponse> resultado = useCase.execute();
 
         assertEquals(tiposUsuario.size(), resultado.size());
         assertEquals(tiposUsuario.getFirst().getDescricao(), resultado.getFirst().descricao());
@@ -50,9 +55,13 @@ public class ListarTiposUsuarioUseCaseTest {
     void deveRetornarListaVaziaSemTiposUsuario() {
         List<TipoUsuario> tiposUsuario = List.of();
 
+        TipoUsuarioMapper tipoUsuarioMapper = new TipoUsuarioMapper();
+
+        ListarTiposUsuarioUseCase useCase = new ListarTiposUsuarioUseCase(tipoUsuarioGateway, tipoUsuarioMapper);
+
         when(tipoUsuarioGateway.listarTodos()).thenReturn(tiposUsuario);
 
-        List<TipoUsuarioReponse> resultado = listarTiposUsuarioUseCase.execute();
+        List<TipoUsuarioReponse> resultado = useCase.execute();
 
         assertEquals(0, resultado.size());
     }
