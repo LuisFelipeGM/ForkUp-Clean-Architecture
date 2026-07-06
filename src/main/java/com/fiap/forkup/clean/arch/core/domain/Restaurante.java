@@ -49,6 +49,15 @@ public class Restaurante {
         item.atualizar(novoItem);
     }
 
+    public void removerItemCardapio(UUID itemCardapioId) {
+        ItemCardapio item = cardapio.stream()
+                .filter(i -> i.getId().equals(itemCardapioId))
+                .findFirst()
+                .orElseThrow(() -> new ItemCardapioNaoEncontradoException("Item do cardápio não encontrado."));
+
+        this.cardapio.remove(item);
+    }
+
     public void alterarRestaurante(String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco) {
         validarNome(nome);
         validarTipoCozinha(tipoCozinha);
