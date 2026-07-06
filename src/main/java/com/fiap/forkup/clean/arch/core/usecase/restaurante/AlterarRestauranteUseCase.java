@@ -30,9 +30,9 @@ public class AlterarRestauranteUseCase {
         restaurante.alterarRestaurante(restauranteRequestUpdate.nome(), restauranteRequestUpdate.tipoCozinha(), restauranteRequestUpdate.horarioFuncionamento(), endereco);
         restauranteGateway.atualizar(restaurante);
 
-        String nomeGerente = restauranteGateway.nomeGerenteVinculadoRestaurante(restaurante.getId());
+        String nomeDono = restauranteGateway.nomeDonoVinculadoRestaurante(restaurante.getId());
 
-        return restauranteMapper.domainToDtoFull(restaurante, nomeGerente);
+        return restauranteMapper.domainToDtoFull(restaurante, nomeDono);
     }
 
 }

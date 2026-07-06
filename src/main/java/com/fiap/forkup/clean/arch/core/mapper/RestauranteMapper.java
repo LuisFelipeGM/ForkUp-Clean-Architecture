@@ -20,17 +20,17 @@ public class RestauranteMapper {
                 restauranteRequestCreate.tipoCozinha(),
                 restauranteRequestCreate.horarioFuncionamento(),
                 enderecoMapper.toDomain(restauranteRequestCreate.endereco()),
-                restauranteRequestCreate.gerenteId()
+                restauranteRequestCreate.donoId()
         );
     }
 
-    public RestauranteResponseFull domainToDtoFull(Restaurante restaurante, String nomeGerente) {
+    public RestauranteResponseFull domainToDtoFull(Restaurante restaurante, String nomeDono) {
         return new RestauranteResponseFull(
                 restaurante.getId(),
                 restaurante.getNome(),
                 restaurante.getTipoCozinha(),
                 restaurante.getHorarioFuncionamento(),
-                nomeGerente,
+                nomeDono,
                 enderecoMapper.domainToDto(restaurante.getEndereco())
         );
     }

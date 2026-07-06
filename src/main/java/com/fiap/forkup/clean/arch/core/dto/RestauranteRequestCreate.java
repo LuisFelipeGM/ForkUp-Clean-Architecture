@@ -6,6 +6,6 @@ public record RestauranteRequestCreate(
         String nome,
         String tipoCozinha,
         String horarioFuncionamento,
-        UUID gerenteId,
+        UUID donoId,
         EnderecoRequest endereco
 ) { }
