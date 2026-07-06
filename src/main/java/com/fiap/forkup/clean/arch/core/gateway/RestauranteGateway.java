@@ -21,6 +21,6 @@ public interface RestauranteGateway {
 
     void atualizar(Restaurante restaurante);
 
-    String nomeGerenteVinculadoRestaurante(UUID idRestaurante);
+    String nomeDonoVinculadoRestaurante(UUID idRestaurante);
 
 }

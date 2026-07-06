@@ -19,7 +19,7 @@ public interface UsuarioGateway {
 
     boolean existsUsuario(UUID id);
 
-    boolean existsUsuarioGerente(UUID id);
+    boolean existsUsuarioDono(UUID id);
 
     boolean existsRestauranteVinculadoUsuario(UUID id);
 

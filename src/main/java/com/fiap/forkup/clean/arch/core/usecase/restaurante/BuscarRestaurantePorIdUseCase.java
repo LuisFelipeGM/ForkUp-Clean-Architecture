@@ -20,7 +20,7 @@ public class BuscarRestaurantePorIdUseCase {
        Restaurante restaurante = restauranteGateway.buscarPorId(id)
                .orElseThrow(() -> new RestauranteNaoEncontradoException("Restaurante não encontrado"));
 
-       String nomeGerente = restauranteGateway.nomeGerenteVinculadoRestaurante(restaurante.getId());
+       String nomeGerente = restauranteGateway.nomeDonoVinculadoRestaurante(restaurante.getId());
 
        return restauranteMapper.domainToDtoFull(restaurante, nomeGerente);
     }

@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: forkup_db
+    restart: always
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - forkup_network
+
+volumes:
+  postgres_data:
+
+networks:
+  forkup_network:
+    driver: bridge

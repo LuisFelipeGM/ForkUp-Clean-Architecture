@@ -1,0 +1,20 @@
+# Git
+.git
+.gitignore
+
+# IDEs
+.idea
+.vscode
+*.iml
+
+# Build / dependências
+build
+out
+bin
+
+# Logs
+*.log
+
+# Docker
+Dockerfile*
+docker-compose*.yml

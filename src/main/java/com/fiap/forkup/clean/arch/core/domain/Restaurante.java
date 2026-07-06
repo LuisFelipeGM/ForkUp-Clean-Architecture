@@ -16,10 +16,10 @@ public class Restaurante {
     private String tipoCozinha;
     private String horarioFuncionamento;
     private Endereco endereco;
-    private UUID gerente;
+    private UUID dono;
     private List<ItemCardapio> cardapio;
 
-    public Restaurante(UUID id, String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco, UUID gerente) {
+    public Restaurante(UUID id, String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco, UUID dono) {
         validarNome(nome);
         validarTipoCozinha(tipoCozinha);
         validarHorarioFuncionamento(horarioFuncionamento);
@@ -30,7 +30,7 @@ public class Restaurante {
         this.tipoCozinha = tipoCozinha;
         this.horarioFuncionamento = horarioFuncionamento;
         this.endereco = endereco;
-        this.gerente = gerente;
+        this.dono = dono;
         this.cardapio = new ArrayList<>();
     }
 
@@ -71,7 +71,7 @@ public class Restaurante {
     }
 
     public void alterarGerente(UUID idGerente) {
-        this.gerente = idGerente;
+        this.dono = idGerente;
     }
 
     private void validarNome(String nome) {
