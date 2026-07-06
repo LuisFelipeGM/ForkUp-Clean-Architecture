@@ -11,9 +11,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class BuscarUsuarioPorIdUseCase {
 
-    private UsuarioGateway usuarioGateway;
+    private final UsuarioGateway usuarioGateway;
 
-    private UsuarioMapper usuarioMapper;
+    private final UsuarioMapper usuarioMapper;
 
     public UsuarioReponseFull execute(UUID id) {
         return usuarioGateway

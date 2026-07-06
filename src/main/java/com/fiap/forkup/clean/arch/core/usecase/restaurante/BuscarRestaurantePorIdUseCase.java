@@ -12,9 +12,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class BuscarRestaurantePorIdUseCase {
 
-    private RestauranteGateway restauranteGateway;
+    private final RestauranteGateway restauranteGateway;
 
-    private RestauranteMapper restauranteMapper;
+    private final RestauranteMapper restauranteMapper;
 
     public RestauranteResponseFull execute(UUID id) {
        Restaurante restaurante = restauranteGateway.buscarPorId(id)

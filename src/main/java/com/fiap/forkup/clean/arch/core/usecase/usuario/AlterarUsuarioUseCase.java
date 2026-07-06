@@ -17,11 +17,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AlterarUsuarioUseCase {
 
-    private UsuarioGateway usuarioGateway;
+    private final UsuarioGateway usuarioGateway;
 
-    private UsuarioMapper usuarioMapper;
+    private final UsuarioMapper usuarioMapper;
 
-    private EnderecoMapper enderecoMapper;
+    private final EnderecoMapper enderecoMapper;
 
     public UsuarioReponseFull execute(final UUID id, final UsuarioRequestUpdate usuarioRequestUpdate) {
         Usuario usuario = usuarioGateway.buscarPorId(id)

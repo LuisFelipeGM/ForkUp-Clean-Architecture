@@ -18,11 +18,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CriarUsuarioUseCase {
 
-    private UsuarioGateway usuarioGateway;
+    private final UsuarioGateway usuarioGateway;
 
-    private TipoUsuarioGateway tipoUsuarioGateway;
+    private final TipoUsuarioGateway tipoUsuarioGateway;
 
-    private UsuarioMapper usuarioMapper;
+    private final UsuarioMapper usuarioMapper;
 
     public UUID execute(final UsuarioRequestCreate usuarioRequestCreate) {
         validarCriacao(usuarioRequestCreate);

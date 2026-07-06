@@ -15,11 +15,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class AlterarRestauranteUseCase {
 
-    private RestauranteGateway restauranteGateway;
+    private final RestauranteGateway restauranteGateway;
 
-    private RestauranteMapper restauranteMapper;
+    private final RestauranteMapper restauranteMapper;
 
-    private EnderecoMapper enderecoMapper;
+    private final EnderecoMapper enderecoMapper;
 
     public RestauranteResponseFull execute(final UUID id, final RestauranteRequestUpdate restauranteRequestUpdate) {
         Restaurante restaurante = restauranteGateway.buscarPorId(id)

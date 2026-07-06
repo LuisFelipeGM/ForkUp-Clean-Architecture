@@ -9,7 +9,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class DeletarRestauranteUseCase {
 
-    private RestauranteGateway restauranteGateway;
+    private final RestauranteGateway restauranteGateway;
 
     public void execute(UUID id) {
         validarExclusao(id);
