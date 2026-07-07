@@ -2,14 +2,13 @@ package com.fiap.forkup.clean.arch.core.gateway;
 
 import com.fiap.forkup.clean.arch.core.domain.Usuario;
 import com.fiap.forkup.clean.arch.core.dto.Pagina;
-import com.fiap.forkup.clean.arch.core.dto.PaginacaoRequest;
 
 import java.util.Optional;
 import java.util.UUID;
 
 public interface UsuarioGateway {
 
-    Pagina<Usuario> listarTodos(PaginacaoRequest paginacao);
+    Pagina<Usuario> listarTodos(Integer pagina, Integer tamanho);
 
     Optional<Usuario> buscarPorId(UUID id);
 
@@ -27,9 +26,9 @@ public interface UsuarioGateway {
 
     boolean existsUsuarioComEsteLogin(String login);
 
-    boolean exitsUsuarioComEsteEmailAndIdNot(String email, UUID id);
+    boolean existsUsuarioComEsteEmailAndIdNot(String email, UUID id);
 
-    boolean exitsUsuarioComEsteEmail(String email);
+    boolean existsUsuarioComEsteEmail(String email);
 
     boolean usuarioVinculadoRestaurante(UUID id);
 

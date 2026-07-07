@@ -16,6 +16,7 @@ public class Restaurante {
     private String tipoCozinha;
     private String horarioFuncionamento;
     private Endereco endereco;
+    private String nomeDono;
     private UUID dono;
     private List<ItemCardapio> cardapio;
 
@@ -56,6 +57,10 @@ public class Restaurante {
                 .orElseThrow(() -> new ItemCardapioNaoEncontradoException("Item do cardápio não encontrado."));
 
         this.cardapio.remove(item);
+    }
+
+    public void setNomeDono(String nomeDono) {
+        this.nomeDono = nomeDono;
     }
 
     public void alterarRestaurante(String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco) {

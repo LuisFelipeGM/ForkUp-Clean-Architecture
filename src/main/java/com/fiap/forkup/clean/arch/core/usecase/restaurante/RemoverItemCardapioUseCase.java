@@ -13,7 +13,7 @@ public class RemoverItemCardapioUseCase {
     private final RestauranteGateway restauranteGateway;
 
     public void execute(UUID restauranteId, UUID itemCardapioId) {
-        Restaurante restaurante = restauranteGateway.buscarPorId(restauranteId)
+        Restaurante restaurante = restauranteGateway.buscarPorIdComCardapio(restauranteId)
                 .orElseThrow(() -> new RestauranteNaoEncontradoException("Restaurante não encontrado"));
 
         restaurante.removerItemCardapio(itemCardapioId);

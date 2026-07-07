@@ -2,13 +2,11 @@ package com.fiap.forkup.clean.arch.core.usecase.usuario;
 
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
 import com.fiap.forkup.clean.arch.core.domain.Usuario;
-import com.fiap.forkup.clean.arch.core.dto.UsuarioRequestCreate;
 import com.fiap.forkup.clean.arch.core.exception.EmailUsuarioJaCadastradoException;
 import com.fiap.forkup.clean.arch.core.exception.LoginUsuarioJaCadastradoException;
 import com.fiap.forkup.clean.arch.core.exception.TipoUsuarioNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.TipoUsuarioGateway;
 import com.fiap.forkup.clean.arch.core.gateway.UsuarioGateway;
-import com.fiap.forkup.clean.arch.core.mapper.UsuarioMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -22,30 +20,28 @@ public class CriarUsuarioUseCase {
 
     private final TipoUsuarioGateway tipoUsuarioGateway;
 
-    private final UsuarioMapper usuarioMapper;
+    public UUID execute(Usuario usuario) {
+        validarCriacao(usuario);
 
-    public UUID execute(final UsuarioRequestCreate usuarioRequestCreate) {
-        validarCriacao(usuarioRequestCreate);
-
-        TipoUsuario tipoUsuario = tipoUsuarioGateway.buscarPorId(usuarioRequestCreate.tipoUsuario())
+        TipoUsuario tipoUsuario = tipoUsuarioGateway.buscarPorId(usuario.getTipoUsuario().getId())
                 .orElseThrow(() -> {
-                    log.error("Tipo Usuário não encontrado com o ID: {}", usuarioRequestCreate.tipoUsuario());
+                    log.error("Tipo Usuário não encontrado com o ID: {}", usuario.getTipoUsuario().getId());
                     return new TipoUsuarioNaoEncontradoException("Tipo Usuário não encontrado");
                 });
 
-        Usuario usuario = usuarioMapper.requestToDomain(usuarioRequestCreate, tipoUsuario);
+        usuario.atualizarTipoUsuario(tipoUsuario);
 
         return usuarioGateway.criar(usuario);
     }
 
-    private void validarCriacao(final UsuarioRequestCreate usuarioRequestCreate) {
-        if (usuarioGateway.existsUsuarioComEsteLogin(usuarioRequestCreate.login())) {
-            log.error("Login já cadastrado: {}", usuarioRequestCreate.login());
+    private void validarCriacao(final Usuario usuario) {
+        if (usuarioGateway.existsUsuarioComEsteLogin(usuario.getLogin())) {
+            log.error("Login já cadastrado: {}", usuario.getLogin());
             throw new LoginUsuarioJaCadastradoException("Login já cadastrado");
         }
 
-        if (usuarioGateway.exitsUsuarioComEsteEmail(usuarioRequestCreate.email())) {
-            log.error("Email já cadastrado: {}", usuarioRequestCreate.email());
+        if (usuarioGateway.existsUsuarioComEsteEmail(usuario.getEmail())) {
+            log.error("Email já cadastrado: {}", usuario.getEmail());
             throw new EmailUsuarioJaCadastradoException("Email já cadastrado");
         }
 

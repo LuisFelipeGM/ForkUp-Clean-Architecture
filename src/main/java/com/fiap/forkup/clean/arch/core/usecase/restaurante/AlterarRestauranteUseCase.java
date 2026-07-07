@@ -1,13 +1,9 @@
 package com.fiap.forkup.clean.arch.core.usecase.restaurante;
 
-import com.fiap.forkup.clean.arch.core.domain.Endereco;
 import com.fiap.forkup.clean.arch.core.domain.Restaurante;
-import com.fiap.forkup.clean.arch.core.dto.RestauranteResponseFull;
-import com.fiap.forkup.clean.arch.core.dto.RestauranteRequestUpdate;
+import com.fiap.forkup.clean.arch.core.dto.AtualizarRestauranteInput;
 import com.fiap.forkup.clean.arch.core.exception.RestauranteNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.RestauranteGateway;
-import com.fiap.forkup.clean.arch.core.mapper.EnderecoMapper;
-import com.fiap.forkup.clean.arch.core.mapper.RestauranteMapper;
 import lombok.AllArgsConstructor;
 
 import java.util.UUID;
@@ -17,22 +13,17 @@ public class AlterarRestauranteUseCase {
 
     private final RestauranteGateway restauranteGateway;
 
-    private final RestauranteMapper restauranteMapper;
-
-    private final EnderecoMapper enderecoMapper;
-
-    public RestauranteResponseFull execute(final UUID id, final RestauranteRequestUpdate restauranteRequestUpdate) {
+    public Restaurante execute(final UUID id, final AtualizarRestauranteInput input) {
         Restaurante restaurante = restauranteGateway.buscarPorId(id)
                 .orElseThrow(() -> new RestauranteNaoEncontradoException("Restaurante não encontrado"));
 
-        Endereco endereco = enderecoMapper.toDomain(restauranteRequestUpdate.endereco());
-
-        restaurante.alterarRestaurante(restauranteRequestUpdate.nome(), restauranteRequestUpdate.tipoCozinha(), restauranteRequestUpdate.horarioFuncionamento(), endereco);
+        restaurante.alterarRestaurante(input.nome(), input.tipoCozinha(), input.horarioFuncionamento(), input.endereco());
         restauranteGateway.atualizar(restaurante);
 
         String nomeDono = restauranteGateway.nomeDonoVinculadoRestaurante(restaurante.getId());
+        restaurante.setNomeDono(nomeDono);
 
-        return restauranteMapper.domainToDtoFull(restaurante, nomeDono);
+        return restaurante;
     }
 
 }

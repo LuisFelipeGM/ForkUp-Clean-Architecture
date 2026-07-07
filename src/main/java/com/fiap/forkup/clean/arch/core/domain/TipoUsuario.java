@@ -24,6 +24,11 @@ public class TipoUsuario {
         this(UUID.randomUUID(), descricao);
     }
 
+    // Construtor parcial
+    public TipoUsuario(UUID id) {
+        this.id = id;
+    }
+
     public void alterarDescricao(String novaDescricao) {
         validarDescricao(novaDescricao);
         this.descricao = novaDescricao.trim();

@@ -24,13 +24,13 @@ public class RestauranteMapper {
         );
     }
 
-    public RestauranteResponseFull domainToDtoFull(Restaurante restaurante, String nomeDono) {
+    public RestauranteResponseFull domainToDtoFull(Restaurante restaurante) {
         return new RestauranteResponseFull(
                 restaurante.getId(),
                 restaurante.getNome(),
                 restaurante.getTipoCozinha(),
                 restaurante.getHorarioFuncionamento(),
-                nomeDono,
+                restaurante.getNomeDono(),
                 enderecoMapper.domainToDto(restaurante.getEndereco())
         );
     }
