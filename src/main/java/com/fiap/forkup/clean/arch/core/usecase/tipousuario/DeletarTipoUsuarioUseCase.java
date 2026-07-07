@@ -12,7 +12,7 @@ public class DeletarTipoUsuarioUseCase {
 
     private final TipoUsuarioGateway tipoUsuarioGateway;
 
-    public void executar(UUID id) {
+    public void execute(UUID id) {
         validarExclusao(id);
         tipoUsuarioGateway.deletar(id);
     }

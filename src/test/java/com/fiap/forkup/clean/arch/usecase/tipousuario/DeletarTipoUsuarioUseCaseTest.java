@@ -34,7 +34,7 @@ public class DeletarTipoUsuarioUseCaseTest {
         when(tipoUsuarioGateway.existsTipoUsuario(any(UUID.class))).thenReturn(true);
         when(tipoUsuarioGateway.existsUsuarioComEsteTipo(any(UUID.class))).thenReturn(false);
 
-        deletarTipoUsuarioUseCase.executar(UUID.randomUUID());
+        deletarTipoUsuarioUseCase.execute(UUID.randomUUID());
 
         verify(tipoUsuarioGateway, times(1)).deletar(any(UUID.class));
         verify(tipoUsuarioGateway, times(1)).existsTipoUsuario(any(UUID.class));
@@ -47,7 +47,7 @@ public class DeletarTipoUsuarioUseCaseTest {
         when(tipoUsuarioGateway.existsTipoUsuario(any(UUID.class))).thenReturn(false);
 
         TipoUsuarioNaoEncontradoException exception = assertThrows(TipoUsuarioNaoEncontradoException.class, () -> {
-            deletarTipoUsuarioUseCase.executar(UUID.randomUUID());
+            deletarTipoUsuarioUseCase.execute(UUID.randomUUID());
         });
 
         assertEquals("Tipo de usuário não encontrado", exception.getMessage());
@@ -62,7 +62,7 @@ public class DeletarTipoUsuarioUseCaseTest {
         when(tipoUsuarioGateway.existsUsuarioComEsteTipo(any(UUID.class))).thenReturn(true);
 
         TipoUsuarioComUsuarioVinculadoException exception = assertThrows(TipoUsuarioComUsuarioVinculadoException.class, () -> {
-            deletarTipoUsuarioUseCase.executar(UUID.randomUUID());
+            deletarTipoUsuarioUseCase.execute(UUID.randomUUID());
         });
 
         assertEquals("Não é possível excluir o tipo de usuário pois existem usuários associados a ele.", exception.getMessage());

@@ -37,17 +37,13 @@ public class BuscarTipoUsuarioPorIdUseCaseTest {
         UUID id = UUID.randomUUID();
         TipoUsuario tipoUsuario = new TipoUsuario(id, "Cliente");
 
-        TipoUsuarioMapper tipoUsuarioMapper = new TipoUsuarioMapper();
-
-        BuscarTipoUsuarioPorIdUseCase useCase = new BuscarTipoUsuarioPorIdUseCase(tipoUsuarioGateway, tipoUsuarioMapper);
-
         when(tipoUsuarioGateway.buscarPorId(id)).thenReturn(Optional.of(tipoUsuario));
 
-        TipoUsuarioReponse retorno = useCase.execute(id);
+        TipoUsuario retorno = buscarTipoUsuarioPorIdUseCase.execute(id);
 
         assertNotNull(retorno);
-        assertEquals(tipoUsuario.getId(), retorno.id());
-        assertEquals(tipoUsuario.getDescricao(), retorno.descricao());
+        assertEquals(tipoUsuario.getId(), retorno.getId());
+        assertEquals(tipoUsuario.getDescricao(), retorno.getDescricao());
         verify(tipoUsuarioGateway, times(1)).buscarPorId(id);
     }
 
@@ -56,13 +52,9 @@ public class BuscarTipoUsuarioPorIdUseCaseTest {
     void deveLancarExcecaoTipoUsuarioNaoEncontrado() {
         UUID id = UUID.randomUUID();
 
-        TipoUsuarioMapper tipoUsuarioMapper = new TipoUsuarioMapper();
-
-        BuscarTipoUsuarioPorIdUseCase useCase = new BuscarTipoUsuarioPorIdUseCase(tipoUsuarioGateway, tipoUsuarioMapper);
-
         when(tipoUsuarioGateway.buscarPorId(id)).thenReturn(Optional.empty());
 
-        TipoUsuarioNaoEncontradoException exception = assertThrows(TipoUsuarioNaoEncontradoException.class, () -> useCase.execute(id));
+        TipoUsuarioNaoEncontradoException exception = assertThrows(TipoUsuarioNaoEncontradoException.class, () -> buscarTipoUsuarioPorIdUseCase.execute(id));
 
         assertEquals("Tipo Usuário não encontrado", exception.getMessage());
         verify(tipoUsuarioGateway, times(1)).buscarPorId(id);

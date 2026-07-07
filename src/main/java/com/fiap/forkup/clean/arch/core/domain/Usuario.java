@@ -38,7 +38,7 @@ public class Usuario {
     public void atualizarUsuario(String nome, String email, String login, Endereco endereco) {
         validarNome(nome);
         validarEmail(email);
-        validarSenha(senha);
+        validarLogin(login);
         this.nome = nome;
         this.email = email;
         this.login = login;

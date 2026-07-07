@@ -4,6 +4,7 @@ import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
 import com.fiap.forkup.clean.arch.core.domain.Usuario;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioRequestCreate;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioReponseFull;
+import com.fiap.forkup.clean.arch.core.dto.UsuarioRequestUpdate;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioResponsePartial;
 import lombok.AllArgsConstructor;
 
@@ -16,14 +17,14 @@ public class UsuarioMapper {
 
     private TipoUsuarioMapper tipoUsuarioMapper;
 
-    public Usuario requestToDomain(UsuarioRequestCreate request, TipoUsuario tipoUsuario) {
+    public Usuario requestToDomain(UsuarioRequestCreate request) {
         return new Usuario(
                 UUID.randomUUID(),
                 request.nome(),
                 request.email(),
                 request.login(),
                 request.senha(),
-                tipoUsuario,
+                new TipoUsuario(request.tipoUsuario()),
                 enderecoMapper.toDomain(request.endereco())
         );
     }

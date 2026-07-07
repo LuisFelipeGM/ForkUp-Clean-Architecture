@@ -1,9 +1,8 @@
 package com.fiap.forkup.clean.arch.core.usecase.usuario;
 
-import com.fiap.forkup.clean.arch.core.dto.UsuarioReponseFull;
+import com.fiap.forkup.clean.arch.core.domain.Usuario;
 import com.fiap.forkup.clean.arch.core.exception.UsuarioNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.UsuarioGateway;
-import com.fiap.forkup.clean.arch.core.mapper.UsuarioMapper;
 import lombok.AllArgsConstructor;
 
 import java.util.UUID;
@@ -13,12 +12,9 @@ public class BuscarUsuarioPorIdUseCase {
 
     private final UsuarioGateway usuarioGateway;
 
-    private final UsuarioMapper usuarioMapper;
-
-    public UsuarioReponseFull execute(UUID id) {
+    public Usuario execute(UUID id) {
         return usuarioGateway
                 .buscarPorId(id)
-                .map(usuarioMapper::domainToDtoFull)
                 .orElseThrow(() -> new UsuarioNaoEncontradoException("Usuário não encontrado"));
     }
 

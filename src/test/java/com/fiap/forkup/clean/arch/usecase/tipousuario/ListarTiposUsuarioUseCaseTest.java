@@ -37,17 +37,13 @@ public class ListarTiposUsuarioUseCaseTest {
 
         List<TipoUsuario> tiposUsuario = List.of(tipoUsuario1, tipoUsuario2);
 
-        TipoUsuarioMapper tipoUsuarioMapper = new TipoUsuarioMapper();
-
-        ListarTiposUsuarioUseCase useCase = new ListarTiposUsuarioUseCase(tipoUsuarioGateway, tipoUsuarioMapper);
-
         when(tipoUsuarioGateway.listarTodos()).thenReturn(tiposUsuario);
 
-        List<TipoUsuarioReponse> resultado = useCase.execute();
+        List<TipoUsuario> resultado = listarTiposUsuarioUseCase.execute();
 
         assertEquals(tiposUsuario.size(), resultado.size());
-        assertEquals(tiposUsuario.getFirst().getDescricao(), resultado.getFirst().descricao());
-        assertEquals(tiposUsuario.getLast().getDescricao(), resultado.getLast().descricao());
+        assertEquals(tiposUsuario.getFirst().getDescricao(), resultado.getFirst().getDescricao());
+        assertEquals(tiposUsuario.getLast().getDescricao(), resultado.getLast().getDescricao());
     }
 
     @Test
@@ -55,13 +51,9 @@ public class ListarTiposUsuarioUseCaseTest {
     void deveRetornarListaVaziaSemTiposUsuario() {
         List<TipoUsuario> tiposUsuario = List.of();
 
-        TipoUsuarioMapper tipoUsuarioMapper = new TipoUsuarioMapper();
-
-        ListarTiposUsuarioUseCase useCase = new ListarTiposUsuarioUseCase(tipoUsuarioGateway, tipoUsuarioMapper);
-
         when(tipoUsuarioGateway.listarTodos()).thenReturn(tiposUsuario);
 
-        List<TipoUsuarioReponse> resultado = useCase.execute();
+        List<TipoUsuario> resultado = listarTiposUsuarioUseCase.execute();
 
         assertEquals(0, resultado.size());
     }
