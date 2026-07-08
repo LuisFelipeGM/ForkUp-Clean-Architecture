@@ -18,9 +18,9 @@ public class Restaurante {
     private Endereco endereco;
     private String nomeDono;
     private UUID dono;
-    private List<ItemCardapio> cardapio;
+    private List<ItemCardapio> cardapio = new ArrayList<>();
 
-    public Restaurante(UUID id, String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco, UUID dono) {
+    public Restaurante(UUID id, String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco, UUID dono, List<ItemCardapio> cardapio) {
         validarNome(nome);
         validarTipoCozinha(tipoCozinha);
         validarHorarioFuncionamento(horarioFuncionamento);
@@ -32,7 +32,7 @@ public class Restaurante {
         this.horarioFuncionamento = horarioFuncionamento;
         this.endereco = endereco;
         this.dono = dono;
-        this.cardapio = new ArrayList<>();
+        this.cardapio = cardapio;
     }
 
     public void adicionarItemCardapio(ItemCardapio item) {
@@ -75,8 +75,8 @@ public class Restaurante {
         this.endereco = endereco;
     }
 
-    public void alterarGerente(UUID idGerente) {
-        this.dono = idGerente;
+    public void alterarDono(UUID idDono) {
+        this.dono = idDono;
     }
 
     private void validarNome(String nome) {

@@ -16,24 +16,24 @@ public class AlterarDonoRestauranteUseCase {
 
     private final UsuarioGateway usuarioGateway;
 
-    public Restaurante execute(UUID idRestaurante, UUID idGerente) {
+    public Restaurante execute(UUID idRestaurante, UUID idDono) {
         var restaurante = restauranteGateway.buscarPorId(idRestaurante).orElseThrow(() -> {
             throw new RestauranteNaoEncontradoException("Restaurante não encontrado");
         });
 
-        validarDono(idGerente);
+        validarDono(idDono);
 
-        restaurante.alterarGerente(idGerente);
+        restaurante.alterarDono(idDono);
         restauranteGateway.atualizar(restaurante);
 
-        String nomeGerente = restauranteGateway.nomeDonoVinculadoRestaurante(restaurante.getId());
-        restaurante.setNomeDono(nomeGerente);
+        String nomeDono = restauranteGateway.nomeDonoVinculadoRestaurante(restaurante.getId());
+        restaurante.setNomeDono(nomeDono);
 
         return restaurante;
     }
 
-    private void validarDono(UUID idGerente) {
-        if (!usuarioGateway.existsUsuarioDono(idGerente)) {
+    private void validarDono(UUID idDono) {
+        if (!usuarioGateway.existsUsuarioDono(idDono)) {
             throw new UsuarioDonoNaoEncontradoException("Dono do Restaurante não encontrado");
         }
     }

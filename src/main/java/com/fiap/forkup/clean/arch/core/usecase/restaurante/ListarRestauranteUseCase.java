@@ -2,7 +2,6 @@ package com.fiap.forkup.clean.arch.core.usecase.restaurante;
 
 import com.fiap.forkup.clean.arch.core.domain.Restaurante;
 import com.fiap.forkup.clean.arch.core.dto.Pagina;
-import com.fiap.forkup.clean.arch.core.dto.PaginacaoRequest;
 import com.fiap.forkup.clean.arch.core.gateway.RestauranteGateway;
 import lombok.AllArgsConstructor;
 
@@ -11,9 +10,9 @@ public class ListarRestauranteUseCase {
 
     private final RestauranteGateway restauranteGateway;
 
-    public Pagina<Restaurante> execute(PaginacaoRequest paginacaoRequest) {
+    public Pagina<Restaurante> execute(int pagina, int tamanho) {
         return restauranteGateway
-                .listar(paginacaoRequest);
+                .listarTodos(pagina, tamanho);
     }
 
 }

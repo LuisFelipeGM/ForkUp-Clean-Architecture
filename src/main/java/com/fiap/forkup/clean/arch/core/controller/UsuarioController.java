@@ -7,10 +7,11 @@ import com.fiap.forkup.clean.arch.core.mapper.EnderecoMapper;
 import com.fiap.forkup.clean.arch.core.mapper.UsuarioMapper;
 import com.fiap.forkup.clean.arch.core.usecase.usuario.*;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UsuarioController {
 
     private final ListarUsuariosUseCase listarUsuariosUseCase;

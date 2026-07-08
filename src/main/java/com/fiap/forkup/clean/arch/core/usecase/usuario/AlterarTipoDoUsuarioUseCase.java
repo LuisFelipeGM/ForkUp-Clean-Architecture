@@ -33,7 +33,7 @@ public class AlterarTipoDoUsuarioUseCase {
     }
 
     private void validarAlterarTipoUsuario(UUID idUsuario) {
-        if (usuarioGateway.usuarioVinculadoRestaurante(idUsuario)) {
+        if (usuarioGateway.existsRestauranteVinculadoUsuario(idUsuario)) {
             throw new UsuarioComRestauranteVinculadoException("Não é possível alterar o tipo do usuário pois existem restaurantes vinculados a ele.");
         }
     }

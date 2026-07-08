@@ -20,7 +20,8 @@ public class RestauranteMapper {
                 restauranteRequestCreate.tipoCozinha(),
                 restauranteRequestCreate.horarioFuncionamento(),
                 enderecoMapper.toDomain(restauranteRequestCreate.endereco()),
-                restauranteRequestCreate.donoId()
+                restauranteRequestCreate.donoId(),
+                null
         );
     }
 

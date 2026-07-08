@@ -9,11 +9,12 @@ import com.fiap.forkup.clean.arch.core.mapper.ItemCardapioMapper;
 import com.fiap.forkup.clean.arch.core.mapper.RestauranteMapper;
 import com.fiap.forkup.clean.arch.core.usecase.restaurante.*;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RestauranteController {
 
     private final ListarRestauranteUseCase listarRestauranteUseCase;
@@ -43,7 +44,7 @@ public class RestauranteController {
     private final EnderecoMapper enderecoMapper;
 
     public Pagina<RestauranteResponsePartial> listarTodosPaginado(PaginacaoRequest paginacaoRequest) {
-        Pagina<Restaurante> restaurantePagina = listarRestauranteUseCase.execute(paginacaoRequest);
+        Pagina<Restaurante> restaurantePagina = listarRestauranteUseCase.execute(paginacaoRequest.pagina(), paginacaoRequest.tamanho());
         return restaurantePagina.map(restauranteMapper::domainToDtoPartial);
     }
 

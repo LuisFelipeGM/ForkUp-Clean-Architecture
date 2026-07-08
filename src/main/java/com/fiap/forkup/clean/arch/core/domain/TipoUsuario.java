@@ -13,6 +13,12 @@ public class TipoUsuario {
     private String descricao;
     private LocalDateTime criadoEm;
 
+    public TipoUsuario(UUID id, String descricao, LocalDateTime criadoEm) {
+        this.id = id;
+        this.descricao = descricao;
+        this.criadoEm = criadoEm;
+    }
+
     public TipoUsuario(UUID id, String descricao) {
         validarDescricao(descricao);
         this.id = id;
@@ -24,7 +30,6 @@ public class TipoUsuario {
         this(UUID.randomUUID(), descricao);
     }
 
-    // Construtor parcial
     public TipoUsuario(UUID id) {
         this.id = id;
     }

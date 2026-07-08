@@ -3,7 +3,6 @@ package com.fiap.forkup.clean.arch.core.gateway;
 import com.fiap.forkup.clean.arch.core.domain.ItemCardapio;
 import com.fiap.forkup.clean.arch.core.domain.Restaurante;
 import com.fiap.forkup.clean.arch.core.dto.Pagina;
-import com.fiap.forkup.clean.arch.core.dto.PaginacaoRequest;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +10,7 @@ import java.util.UUID;
 
 public interface RestauranteGateway {
 
-    Pagina<Restaurante> listar(PaginacaoRequest paginacaoRequest);
+    Pagina<Restaurante> listarTodos(Integer pagina, Integer tamanho);
 
     Optional<Restaurante> buscarPorId(UUID id);
 
