@@ -6,12 +6,13 @@ import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioRequest;
 import com.fiap.forkup.clean.arch.core.mapper.TipoUsuarioMapper;
 import com.fiap.forkup.clean.arch.core.usecase.tipousuario.*;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class TipoUsuarioController {
 
     private final ListarTiposUsuarioUseCase listarTiposUsuarioUseCase;

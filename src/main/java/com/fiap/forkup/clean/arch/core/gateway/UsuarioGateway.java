@@ -30,7 +30,5 @@ public interface UsuarioGateway {
 
     boolean existsUsuarioComEsteEmail(String email);
 
-    boolean usuarioVinculadoRestaurante(UUID id);
-
     void deletar(UUID id);
 }

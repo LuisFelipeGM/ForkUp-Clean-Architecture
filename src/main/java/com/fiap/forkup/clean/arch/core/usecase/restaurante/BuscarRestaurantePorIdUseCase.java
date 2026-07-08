@@ -13,8 +13,6 @@ public class BuscarRestaurantePorIdUseCase {
 
     private final RestauranteGateway restauranteGateway;
 
-    private final RestauranteMapper restauranteMapper;
-
     public Restaurante execute(UUID id) {
        Restaurante restaurante = restauranteGateway.buscarPorId(id)
                .orElseThrow(() -> new RestauranteNaoEncontradoException("Restaurante não encontrado"));
