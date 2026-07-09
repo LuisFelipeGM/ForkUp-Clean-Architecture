@@ -61,7 +61,9 @@ INSERT INTO forkup.endereco (id, logradouro, numero, complemento, cidade, cep) V
     ('974bfcd3-3261-47a1-a526-e47e192d2b5c', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678'),
     ('d907095c-6c25-403e-a223-cde862685360', 'Avenida Teste', '456', NULL, 'Cidade Teste', '23456-789'),
     ('38396cbf-9729-4f5e-9c2e-21cc4326c215', 'Praça Central', '789', 'Sala 202', 'Cidade Central', '34567-890'),
-    ('e5bb4475-cb20-4a8f-8140-94ae03654623', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678');
+    ('e5bb4475-cb20-4a8f-8140-94ae03654623', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678'),
+    ('a4e9ea7a-16c4-4ad5-b277-9d1d80daf09c', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678'),
+    ('11c8e323-6894-4a66-8b7b-d400a1863239', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678');
 
 INSERT INTO forkup.usuario (id, nome, email, login, senha, tipo_usuario_id, endereco_id) VALUES
     ('6a12b853-4179-43ba-8e38-7187f1f5d363', 'João Silva', 'joao.silva@example.com', 'joao.silva',
@@ -79,13 +81,24 @@ INSERT INTO forkup.usuario (id, nome, email, login, senha, tipo_usuario_id, ende
     ('344eef8e-f75f-4849-9530-9ab230ca413c', 'Dono Restaurante 3', 'dono.restaurante3@example.com', 'dono.restaurante3',
      'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', '38396cbf-9729-4f5e-9c2e-21cc4326c215'),
     ('1bf2ab7b-a418-43e4-ad20-40a838e3d538', 'Dono Restaurante 4', 'dono.restaurante4@example.com', 'dono.restaurante4',
-     'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'e5bb4475-cb20-4a8f-8140-94ae03654623');
+     'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'e5bb4475-cb20-4a8f-8140-94ae03654623'),
+     ('14436ce7-3d15-45ea-b7c1-9d626b4ddfbe', 'Dono Restaurante 5', 'dono.restaurante5@example.com', 'dono.restaurante5',
+     'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'a4e9ea7a-16c4-4ad5-b277-9d1d80daf09c'),
+     ('dc67ce18-52ec-48ae-b19a-63d0b747c8dd', 'Dono Restaurante 6', 'dono.restaurante6@example.com', 'dono.restaurante6',
+     'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', '11c8e323-6894-4a66-8b7b-d400a1863239');
 
 ---
 INSERT INTO forkup.endereco (id, logradouro, numero, complemento, cidade, cep) VALUES
     ('64774ab0-3822-4f8c-bba0-5e3a50a701be', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678'),
-    ('26e0eaea-7833-416b-90ca-7834ae62e648', 'Avenida Teste', '456', NULL, 'Cidade Teste', '23456-789');
+    ('26e0eaea-7833-416b-90ca-7834ae62e648', 'Avenida Teste', '456', NULL, 'Cidade Teste', '23456-789'),
+    ('ab55157c-40d5-4e78-b36b-90291fde3267', 'Praça Central', '789', 'Sala 202', 'Cidade Central', '34567-890');
 
 INSERT INTO forkup.restaurante (id, nome, tipo_cozinha, horario_funcionamento, endereco_id, dono_id) VALUES
     ('d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'Restaurante Exemplo', 'Italiana', '10:00 - 22:00', '64774ab0-3822-4f8c-bba0-5e3a50a701be', '615c8f57-6bf2-4426-a3bb-3a59faa70b95'),
-    ('e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'Restaurante Teste', 'Mexicana', '11:00 - 23:00', '26e0eaea-7833-416b-90ca-7834ae62e648', '0558b2af-a22a-4631-a608-02e6536f33c9');
+    ('e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'Restaurante Teste', 'Mexicana', '11:00 - 23:00', '26e0eaea-7833-416b-90ca-7834ae62e648', '0558b2af-a22a-4631-a608-02e6536f33c9'),
+    ('36840a82-06a7-47d0-9e0c-a2e8517b6c6c', 'Restaurante A Ser Excluido', 'Chinesa', '09:00 - 21:00', 'ab55157c-40d5-4e78-b36b-90291fde3267', '14436ce7-3d15-45ea-b7c1-9d626b4ddfbe');
+
+INSERT INTO forkup.item_cardapio (id, nome, descricao, preco, apenas_restaurante, foto_url, restaurante_id) VALUES
+    ('750bb722-cd6a-4734-a406-64a0a35a0d98', 'Temaki Manter', 'Delicioso Temaki de Salmão em Cubos.', 25.00, FALSE, 'https://example.com/temaki_salmao.jpg', 'd1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b'),
+    ('47605e32-4c3a-4bf2-aa6d-11108a92bf6c', 'Urumaki Salmão Alterar', 'Sushi de Salmão com alga nori.', 15.00, FALSE, 'https://example.com/urumaki_salmao.jpg', 'd1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b'),
+    ('7d3767bc-c5d9-4e72-a0dd-5757446f9974', 'Sushi Variado A Ser Excluido', 'Seleção de sushi fresco com peixe e vegetais.', 30.00, FALSE, 'https://example.com/sushi_variado.jpg', 'd1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b');

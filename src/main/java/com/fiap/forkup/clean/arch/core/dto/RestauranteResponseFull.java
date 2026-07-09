@@ -8,6 +8,6 @@ public record RestauranteResponseFull(
         String tipoCozinha,
         String horarioFuncionamento,
         String nomeDono,
-        EnderecoResponse enderecoResponse
+        EnderecoResponse endereco
 ) {
 }

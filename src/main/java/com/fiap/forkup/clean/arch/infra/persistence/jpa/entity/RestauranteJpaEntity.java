@@ -37,7 +37,7 @@ public class RestauranteJpaEntity {
     @JoinColumn(name = "dono_id")
     private UsuarioJpaEntity dono;
 
-    @OneToMany(mappedBy = "restaurante")
+    @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemCardapioJpaEntity> cardapio;
 
 }
