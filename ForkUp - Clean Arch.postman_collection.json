@@ -1,0 +1,1727 @@
+{
+  "info": {
+    "_postman_id": "c55b5fec-9e18-48f6-b9fe-93a964234b5c",
+    "name": "ForkUp - Clean Arch",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23735733"
+  },
+  "item": [
+    {
+      "name": "Tipo Usuário",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "Listar Todos Tipos de Usuario",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Tipo Usuario FindById",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Tipo Usuario Create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\" : \"Suporte\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Tipo Usuario Update",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\" : \"Administrador do Sistema\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/3f9d0b1c-3e4f-5c7d-8b1c-3e4f5c7d0b1c",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "3f9d0b1c-3e4f-5c7d-8b1c-3e4f5c7d0b1c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Tipo Usuario Delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/09309e13-38ed-4250-8a2c-d4bdd5e80a9b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "09309e13-38ed-4250-8a2c-d4bdd5e80a9b"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "Erro Tipo Usuario Não Encontrado",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/15fef1c5-5958-4904-1234-e18f17c3b231",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "15fef1c5-5958-4904-1234-e18f17c3b231"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Descrição vazia",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Descrição maior que 50 caracteres",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\": \"Tipo Usuário com Descrição Maior que 50 caractéres passando muito de tamanho\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Tipo Usuário Já Cadastrado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\": \"Cliente\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração ID Inválido",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\": \"Suporte Especializado\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/2f8c9a0b-2d3e-4b6c-1234-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "2f8c9a0b-2d3e-4b6c-1234-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração Descrição Já Cadastrado",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\": \"Cliente\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/731b81c2-e0c5-49e3-b8d3-e20be7786e99",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "731b81c2-e0c5-49e3-b8d3-e20be7786e99"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração Descrição Vazio",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/731b81c2-e0c5-49e3-b8d3-e20be7786e99",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "731b81c2-e0c5-49e3-b8d3-e20be7786e99"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração Descrição mario que 50 caracteres",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\": \"Tipo Usuário com Descrição Maior que 50 caractéres passando muito de tamanho\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/731b81c2-e0c5-49e3-b8d3-e20be7786e99",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "731b81c2-e0c5-49e3-b8d3-e20be7786e99"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Exclusão Tipo Usuario Não Encontrado",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"descricao\": \"Tipo Usuário com Descrição Maior que 50 caractéres passando muito de tamanho\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/731b81c2-e0c5-49e3-1234-e20be7786e99",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "731b81c2-e0c5-49e3-1234-e20be7786e99"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Exclusão Tipo Usuario Vinculado a um Usuario",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tipo-usuario/1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tipo-usuario",
+                    "1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "Listar Todos Usuarios Paginado",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/usuario?page=0&size=5",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "5"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar Usuario FindById",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/809e9b65-d878-4bef-81bd-74379bf24eb3",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "809e9b65-d878-4bef-81bd-74379bf24eb3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Usuario Create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Arthur Mendes\",\r\n  \"email\": \"arthur.mendes@example.com\",\r\n  \"login\": \"ArthurMD\",\r\n  \"senha\": \"SenhaForte123@\",\r\n  \"tipoUsuario\": \"1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua das Flores\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 401\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Usuario Update",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Joao Alves Menezes \",\r\n  \"email\": \"joao.alves@gmail.com\",\r\n  \"login\": \"JoaoAMZ\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Equador\",\r\n    \"numero\": \"1263\",\r\n    \"complemento\": \"Apto 556\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/6a12b853-4179-43ba-8e38-7187f1f5d363",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "6a12b853-4179-43ba-8e38-7187f1f5d363"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Usuario Alterar Tipo Usuario",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"tipoUsuario\" : \"2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/alterar-tipo/6a12b853-4179-43ba-8e38-7187f1f5d363",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "alterar-tipo",
+                    "6a12b853-4179-43ba-8e38-7187f1f5d363"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Usuairo Delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/59f598a2-8864-4738-b9b6-3b32c1c18ec9",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "59f598a2-8864-4738-b9b6-3b32c1c18ec9"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "Erro Usuario Não Encontrado",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/59f598a2-8864-1234-b9b6-3b32c1c18ec9",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "59f598a2-8864-1234-b9b6-3b32c1c18ec9"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Usuario Criação Login Já Existente",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Maria Lurdes\",\r\n  \"email\": \"maria.lurdes@example.com\",\r\n  \"login\": \"maria.oliveira\",\r\n  \"senha\": \"SenhaForte123@\",\r\n  \"tipoUsuario\": \"1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua das Flores\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 401\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Usuario Criação Email Já Existente",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Maria Lurdes\",\r\n  \"email\": \"maria.oliveira@example.com\",\r\n  \"login\": \"maria.lurdes\",\r\n  \"senha\": \"SenhaForte123@\",\r\n  \"tipoUsuario\": \"1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua das Flores\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 401\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Usuario Criação Tipo Usuario Inválido",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Maria Lurdes\",\r\n  \"email\": \"maria.lurdes@example.com\",\r\n  \"login\": \"maria.lurdes\",\r\n  \"senha\": \"SenhaForte123@\",\r\n  \"tipoUsuario\": \"1e7b8f9e-1c2d-1234-8f9e-1c2d4a5b8f9e\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua das Flores\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 401\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Usuario Criação Nome Inválido",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"M\",\r\n  \"email\": \"maria.lurdes@example.com\",\r\n  \"login\": \"maria.lurdes\",\r\n  \"senha\": \"SenhaForte123@\",\r\n  \"tipoUsuario\": \"1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua das Flores\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 401\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Usuario Criação Login Com Espaço",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Maria Lurdes\",\r\n  \"email\": \"maria.lurdes@example.com\",\r\n  \"login\": \"maria lurdes\",\r\n  \"senha\": \"SenhaForte123@\",\r\n  \"tipoUsuario\": \"1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua das Flores\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 401\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Usuario Criação Login Inválido",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Maria Lurdes\",\r\n  \"email\": \"maria.lurdes@example.com\",\r\n  \"login\": \"ma\",\r\n  \"senha\": \"SenhaForte123@\",\r\n  \"tipoUsuario\": \"1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua das Flores\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 401\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Usuario Criação Senha fraca",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Maria Lurdes\",\r\n  \"email\": \"maria.lurdes@example.com\",\r\n  \"login\": \"maria.lurdes\",\r\n  \"senha\": \"senha123\",\r\n  \"tipoUsuario\": \"1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua das Flores\",\r\n    \"numero\": \"123\",\r\n    \"complemento\": \"Apto 401\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração Usuario Não Encontrado",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Joao Alves Menezes \",\r\n  \"email\": \"joao.silva@example.com\",\r\n  \"login\": \"JoaoAMZ\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Equador\",\r\n    \"numero\": \"1263\",\r\n    \"complemento\": \"Apto 556\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/704f1d39-f40a-1234-a56b-1c08278a24d2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "704f1d39-f40a-1234-a56b-1c08278a24d2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração Usuario Login Já Existente",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Joao Alves Menezes \",\r\n  \"email\": \"joao.alves@gmail.com\",\r\n  \"login\": \"maria.oliveira\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Equador\",\r\n    \"numero\": \"1263\",\r\n    \"complemento\": \"Apto 556\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/704f1d39-f40a-4319-a56b-1c08278a24d2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "704f1d39-f40a-4319-a56b-1c08278a24d2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração Usuario Email Já Existente",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Joao Alves Menezes \",\r\n  \"email\": \"maria.oliveira@example.com\",\r\n  \"login\": \"joaoAlvez\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Equador\",\r\n    \"numero\": \"1263\",\r\n    \"complemento\": \"Apto 556\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/704f1d39-f40a-4319-a56b-1c08278a24d2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "704f1d39-f40a-4319-a56b-1c08278a24d2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração Usuario Nome Inválido",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"J\",\r\n  \"email\": \"joao.aaa@gmail.com\",\r\n  \"login\": \"joaoAlvez\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Equador\",\r\n    \"numero\": \"1263\",\r\n    \"complemento\": \"Apto 556\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/704f1d39-f40a-4319-a56b-1c08278a24d2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "704f1d39-f40a-4319-a56b-1c08278a24d2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração Usuario Login Com Espaço",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"João Alvez Menezes\",\r\n  \"email\": \"joao.lucili@gmail.com\",\r\n  \"login\": \"joao Alvez\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Equador\",\r\n    \"numero\": \"1263\",\r\n    \"complemento\": \"Apto 556\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/704f1d39-f40a-4319-a56b-1c08278a24d2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "704f1d39-f40a-4319-a56b-1c08278a24d2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração Usuario Login Inválido",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"João Alvez Menezes\",\r\n  \"email\": \"joao.lucili@gmail.com\",\r\n  \"login\": \"jo\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Rua Equador\",\r\n    \"numero\": \"1263\",\r\n    \"complemento\": \"Apto 556\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01234-567\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/704f1d39-f40a-4319-a56b-1c08278a24d2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "704f1d39-f40a-4319-a56b-1c08278a24d2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração do Tipo, Usuario Inexistente",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"tipoUsuario\" : \"2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/alterar-tipo/704f1d39-f40a-1234-a56b-1c08278a24d2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "alterar-tipo",
+                    "704f1d39-f40a-1234-a56b-1c08278a24d2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração do Tipo, Tipo Inexistente",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"tipoUsuario\" : \"2f8c9a0b-2d3e-1234-9a0b-2d3e4b6c9a0b\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/alterar-tipo/704f1d39-f40a-4319-a56b-1c08278a24d2",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "alterar-tipo",
+                    "704f1d39-f40a-4319-a56b-1c08278a24d2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alteração do Tipo, Restaurante Vinculado ao Usuario",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"tipoUsuario\" : \"1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/alterar-tipo/809e9b65-d878-4bef-81bd-74379bf24eb3",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "alterar-tipo",
+                    "809e9b65-d878-4bef-81bd-74379bf24eb3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Delete Usuario Inválido",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/809e9b65-d878-1234-81bd-74379bf24eb3",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "809e9b65-d878-1234-81bd-74379bf24eb3"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Delete Usuario Restaurante Vinculado",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/usuario/615c8f57-6bf2-4426-a3bb-3a59faa70b95",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "usuario",
+                    "615c8f57-6bf2-4426-a3bb-3a59faa70b95"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Restaurante",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "Listar Todos Restaurantes Paginado",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar Restaurante FindById",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Restaurante Create",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"China in Box\",\r\n  \"tipoCozinha\": \"Chinesa\",\r\n  \"horarioFuncionamento\": \"11:00-23:00\",\r\n  \"donoId\": \"344eef8e-f75f-4849-9530-9ab230ca413c\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Avenida Paulista\",\r\n    \"numero\": \"1578\",\r\n    \"complemento\": \"Loja 01\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01311-100\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Restaurante Update",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Gendai\",\r\n  \"tipoCozinha\": \"Japonesa\",\r\n  \"horarioFuncionamento\": \"12:00-00:00\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Avenida Paulista\",\r\n    \"numero\": \"1500\",\r\n    \"complemento\": null,\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01311-100\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Restaurante Alterar Dono",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"idDono\" : \"1bf2ab7b-a418-43e4-ad20-40a838e3d538\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/alterar-dono/e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "alterar-dono",
+                    "e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Restaurante Delete",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/36840a82-06a7-47d0-9e0c-a2e8517b6c6c",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "36840a82-06a7-47d0-9e0c-a2e8517b6c6c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar Cadapio Restaurante",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b/cardapio",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                    "cardapio"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Criar Item do Cadapio Restaurante",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Sashimi de Salmão\",\r\n    \"descricao\": \"Fatia de sashimi de salmão cru\",\r\n    \"preco\": 55.0,\r\n    \"apenasRestaurante\": false,\r\n    \"pathFoto\": \"https://example.com/sashimi_salmao.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b/cardapio",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                    "cardapio"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Atualizar Item do Cardapio do Restaurante",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"HotRoll Salmão\",\r\n    \"descricao\": \"Delicioso HotRoll frito com salmão grelhado\",\r\n    \"preco\": 44.30,\r\n    \"apenasRestaurante\": true,\r\n    \"pathFoto\": \"https://example.com/hotroll_salmao.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b/cardapio/47605e32-4c3a-4bf2-aa6d-11108a92bf6c",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                    "cardapio",
+                    "47605e32-4c3a-4bf2-aa6d-11108a92bf6c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Exluir Item do Cardapio do Restaurante",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"HotRoll Salmão\",\r\n    \"descricao\": \"Delicioso HotRoll frito com salmão grelhado\",\r\n    \"preco\": 44.30,\r\n    \"apenasRestaurante\": true,\r\n    \"pathFoto\": \"https://example.com/hotroll_salmao.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b/cardapio/7d3767bc-c5d9-4e72-a0dd-5757446f9974",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                    "cardapio",
+                    "7d3767bc-c5d9-4e72-a0dd-5757446f9974"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "Erro Restaurante Não Encontrado",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Sashimi de Salmão\",\r\n    \"descricao\": \"Fatia de sashimi de salmão cru\",\r\n    \"preco\": 55.0,\r\n    \"apenasRestaurante\": false,\r\n    \"pathFoto\": \"https://example.com/sashimi_salmao.jpg\"\r\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Dono do Restaurante não encontrado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"China in Box\",\r\n  \"tipoCozinha\": \"Chinesa\",\r\n  \"horarioFuncionamento\": \"11:00-23:00\",\r\n  \"donoId\": \"344eef8e-f75f-1234-9530-9ab230ca413c\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Avenida Paulista\",\r\n    \"numero\": \"1578\",\r\n    \"complemento\": \"Loja 01\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01311-100\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Dono já vinculado a outro restaurante",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"China in Box\",\r\n  \"tipoCozinha\": \"Chinesa\",\r\n  \"horarioFuncionamento\": \"11:00-23:00\",\r\n  \"donoId\": \"615c8f57-6bf2-4426-a3bb-3a59faa70b95\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Avenida Paulista\",\r\n    \"numero\": \"1578\",\r\n    \"complemento\": \"Loja 01\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01311-100\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Nome Restaurante Inválido",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"I\",\r\n  \"tipoCozinha\": \"Italiana\",\r\n  \"horarioFuncionamento\": \"11:00-23:00\",\r\n  \"donoId\": \"dc67ce18-52ec-48ae-b19a-63d0b747c8dd\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Avenida Paulista\",\r\n    \"numero\": \"1578\",\r\n    \"complemento\": \"Loja 01\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01311-100\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Atualizar Restaurante Não Encontrado",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"Gendai\",\r\n  \"tipoCozinha\": \"Japonesa\",\r\n  \"horarioFuncionamento\": \"12:00-00:00\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Avenida Paulista\",\r\n    \"numero\": \"1500\",\r\n    \"complemento\": null,\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01311-100\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/e2f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "e2f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Atualizar Restaurante Nome Invalido",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"nome\": \"G\",\r\n  \"tipoCozinha\": \"Japonesa\",\r\n  \"horarioFuncionamento\": \"12:00-00:00\",\r\n  \"endereco\": {\r\n    \"logradouro\": \"Avenida Paulista\",\r\n    \"numero\": \"1500\",\r\n    \"complemento\": null,\r\n    \"cidade\": \"São Paulo\",\r\n    \"cep\": \"01311-100\"\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alterar Dono do Restaurante Não encontrado",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"idDono\" : \"1bf2ab7b-a418-43e4-ad20-40a838e3d538\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/alterar-dono/e2f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "alterar-dono",
+                    "e2f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alterar Dono do Restaurante, Novo Dono não encontrado",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"idDono\" : \"1bf2ab7b-a418-1234-ad20-40a838e3d538\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/alterar-dono/e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "alterar-dono",
+                    "e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Alterar Dono do Restaurante, Dono já vinculado a outro restaurante",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"idDono\" : \"615c8f57-6bf2-4426-a3bb-3a59faa70b95\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/alterar-dono/e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "alterar-dono",
+                    "e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Delete Restaurante Não Encontrado",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/36840a82-06a7-1234-9e0c-a2e8517b6c6c",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "36840a82-06a7-1234-9e0c-a2e8517b6c6c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Listar Cardapio de Restaurante Não Encontrado",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/36840a82-06a7-1234-9e0c-a2e8517b6c6c/cardapio",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "36840a82-06a7-1234-9e0c-a2e8517b6c6c",
+                    "cardapio"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Criar Item do Cadapio Restaurante Não Encontrado",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Sashimi de Salmão\",\r\n    \"descricao\": \"Fatia de sashimi de salmão cru\",\r\n    \"preco\": 55.0,\r\n    \"apenasRestaurante\": false,\r\n    \"pathFoto\": \"https://example.com/sashimi_salmao.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b/cardapio",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b",
+                    "cardapio"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Atualizar Item do Cardapio Restaurante Não Encontrado",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"HotRoll Salmão\",\r\n    \"descricao\": \"Delicioso HotRoll frito com salmão grelhado\",\r\n    \"preco\": 44.30,\r\n    \"apenasRestaurante\": true,\r\n    \"pathFoto\": \"https://example.com/hotroll_salmao.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b/cardapio/47605e32-4c3a-4bf2-aa6d-11108a92bf6c",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b",
+                    "cardapio",
+                    "47605e32-4c3a-4bf2-aa6d-11108a92bf6c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Atualizar Item do Cardapio Não Encontrado",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"HotRoll Salmão\",\r\n    \"descricao\": \"Delicioso HotRoll frito com salmão grelhado\",\r\n    \"preco\": 44.30,\r\n    \"apenasRestaurante\": true,\r\n    \"pathFoto\": \"https://example.com/hotroll_salmao.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b/cardapio/47605e32-4c3a-1234-aa6d-11108a92bf6c",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                    "cardapio",
+                    "47605e32-4c3a-1234-aa6d-11108a92bf6c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Excluir Item do Cardapio Restaurante Não Encontrado",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"HotRoll Salmão\",\r\n    \"descricao\": \"Delicioso HotRoll frito com salmão grelhado\",\r\n    \"preco\": 44.30,\r\n    \"apenasRestaurante\": true,\r\n    \"pathFoto\": \"https://example.com/hotroll_salmao.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b/cardapio/7d3767bc-c5d9-4e72-a0dd-5757446f9974",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-1234-9a0b-2d3e4b6c9a0b",
+                    "cardapio",
+                    "7d3767bc-c5d9-4e72-a0dd-5757446f9974"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Erro Excluir Item do Cardapio Não Encontrado",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"HotRoll Salmão\",\r\n    \"descricao\": \"Delicioso HotRoll frito com salmão grelhado\",\r\n    \"preco\": 44.30,\r\n    \"apenasRestaurante\": true,\r\n    \"pathFoto\": \"https://example.com/hotroll_salmao.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/restaurante/d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b/cardapio/7d3767bc-c5d9-1234-a0dd-5757446f9974",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "restaurante",
+                    "d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b",
+                    "cardapio",
+                    "7d3767bc-c5d9-1234-a0dd-5757446f9974"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3710/api"
+    }
+  ]
+}

@@ -18,7 +18,7 @@ public class RestauranteEntityMapper {
         if (restaurante == null)
             return null;
 
-        return RestauranteJpaEntity.builder()
+        RestauranteJpaEntity restauranteJpa = RestauranteJpaEntity.builder()
                 .id(restaurante.getId())
                 .nome(restaurante.getNome())
                 .tipoCozinha(restaurante.getTipoCozinha())
@@ -27,6 +27,12 @@ public class RestauranteEntityMapper {
                 .dono(UsuarioJpaEntity.builder().id(restaurante.getDono()).build())
                 .cardapio(itemCardapioEntityMapper.toEntityList(restaurante.getCardapio()))
                 .build();
+
+        if (restauranteJpa.getCardapio() != null && !restauranteJpa.getCardapio().isEmpty()) {
+            restauranteJpa.getCardapio().forEach(item -> item.setRestaurante(restauranteJpa));
+        }
+
+        return restauranteJpa;
     }
 
     public Restaurante toDomain(RestauranteJpaEntity jpaEntity) {

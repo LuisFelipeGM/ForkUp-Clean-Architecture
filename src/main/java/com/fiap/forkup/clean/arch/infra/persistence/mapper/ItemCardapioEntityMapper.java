@@ -4,6 +4,7 @@ import com.fiap.forkup.clean.arch.core.domain.ItemCardapio;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.ItemCardapioJpaEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -49,12 +50,14 @@ public class ItemCardapioEntityMapper {
 
     public List<ItemCardapio> toDomainList(List<ItemCardapioJpaEntity> cardapio) {
         if (cardapio == null) {
-            return List.of();
+            return new ArrayList<>();
         }
 
-        return cardapio.stream()
-                .map(this::toDomain)
-                .toList();
+        return new ArrayList<>(
+                cardapio.stream()
+                        .map(this::toDomain)
+                        .toList()
+        );
     }
 
 }
