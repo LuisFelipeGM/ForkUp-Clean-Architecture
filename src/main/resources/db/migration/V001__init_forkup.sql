@@ -49,4 +49,43 @@ CREATE TABLE IF NOT EXISTS forkup.item_cardapio (
 INSERT INTO forkup.tipo_usuario (id, descricao) VALUES
     ('2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'Dono de Restaurante'),
     ('1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e', 'Cliente'),
-    ('3f9d0b1c-3e4f-5c7d-8b1c-3e4f5c7d0b1c', 'Administrador');
+    ('3f9d0b1c-3e4f-5c7d-8b1c-3e4f5c7d0b1c', 'Administrador'),
+    ('09309e13-38ed-4250-8a2c-d4bdd5e80a9b', 'Tipo Usuário a ser Excluido'),
+    ('731b81c2-e0c5-49e3-b8d3-e20be7786e99', 'Tipo Usuário a ser Alterado');
+
+INSERT INTO forkup.endereco (id, logradouro, numero, complemento, cidade, cep) VALUES
+    ('4a7f93ec-5940-4803-833b-540dd3fade4e', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678'),
+    ('fb592482-462b-4902-a0f7-0b658374d28d', 'Avenida Teste', '456', NULL, 'Cidade Teste', '23456-789'),
+    ('59f598a2-8864-4738-b9b6-3b32c1c18ec9', 'Praça Central', '789', 'Sala 202', 'Cidade Central', '34567-890'),
+    ('0e426136-f74a-4562-9818-2c46d25f0814', 'Travessa Nova', '321', NULL, 'Cidade Nova', '45678-901'),
+    ('974bfcd3-3261-47a1-a526-e47e192d2b5c', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678'),
+    ('d907095c-6c25-403e-a223-cde862685360', 'Avenida Teste', '456', NULL, 'Cidade Teste', '23456-789'),
+    ('38396cbf-9729-4f5e-9c2e-21cc4326c215', 'Praça Central', '789', 'Sala 202', 'Cidade Central', '34567-890'),
+    ('e5bb4475-cb20-4a8f-8140-94ae03654623', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678');
+
+INSERT INTO forkup.usuario (id, nome, email, login, senha, tipo_usuario_id, endereco_id) VALUES
+    ('6a12b853-4179-43ba-8e38-7187f1f5d363', 'João Silva', 'joao.silva@example.com', 'joao.silva',
+     'SenhaForte1234@', '1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e', '4a7f93ec-5940-4803-833b-540dd3fade4e'),
+    ('809e9b65-d878-4bef-81bd-74379bf24eb3', 'Maria Oliveira', 'maria.oliveira@example.com', 'maria.oliveira',
+     'SenhaForte456@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'fb592482-462b-4902-a0f7-0b658374d28d'),
+    ('704f1d39-f40a-4319-a56b-1c08278a24d2', 'Usuario a ser Alterado', 'usuario.alterado@example.com', 'usuario.alterado',
+     'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', '0e426136-f74a-4562-9818-2c46d25f0814'),
+    ('59f598a2-8864-4738-b9b6-3b32c1c18ec9', 'Carlos Santos Usuário a Ser Excluido', 'carlos.santos@example.com', 'carlos.santos',
+     'SenhaForte789@', '1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e', '59f598a2-8864-4738-b9b6-3b32c1c18ec9'),
+    ('615c8f57-6bf2-4426-a3bb-3a59faa70b95', 'Dono Restaurante 1', 'dono.restaurante1@example.com', 'dono.restaurante1',
+     'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', '974bfcd3-3261-47a1-a526-e47e192d2b5c'),
+    ('0558b2af-a22a-4631-a608-02e6536f33c9', 'Dono Restaurante 2', 'dono.restaurante2@example.com', 'dono.restaurante2',
+     'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'd907095c-6c25-403e-a223-cde862685360'),
+    ('344eef8e-f75f-4849-9530-9ab230ca413c', 'Dono Restaurante 3', 'dono.restaurante3@example.com', 'dono.restaurante3',
+     'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', '38396cbf-9729-4f5e-9c2e-21cc4326c215'),
+    ('1bf2ab7b-a418-43e4-ad20-40a838e3d538', 'Dono Restaurante 4', 'dono.restaurante4@example.com', 'dono.restaurante4',
+     'SenhaForte789@', '2f8c9a0b-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'e5bb4475-cb20-4a8f-8140-94ae03654623');
+
+---
+INSERT INTO forkup.endereco (id, logradouro, numero, complemento, cidade, cep) VALUES
+    ('64774ab0-3822-4f8c-bba0-5e3a50a701be', 'Rua Exemplo', '123', 'Apto 101', 'Cidade Exemplo', '12345-678'),
+    ('26e0eaea-7833-416b-90ca-7834ae62e648', 'Avenida Teste', '456', NULL, 'Cidade Teste', '23456-789');
+
+INSERT INTO forkup.restaurante (id, nome, tipo_cozinha, horario_funcionamento, endereco_id, dono_id) VALUES
+    ('d1f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'Restaurante Exemplo', 'Italiana', '10:00 - 22:00', '64774ab0-3822-4f8c-bba0-5e3a50a701be', '615c8f57-6bf2-4426-a3bb-3a59faa70b95'),
+    ('e2f8c9a0-2d3e-4b6c-9a0b-2d3e4b6c9a0b', 'Restaurante Teste', 'Mexicana', '11:00 - 23:00', '26e0eaea-7833-416b-90ca-7834ae62e648', '0558b2af-a22a-4631-a608-02e6536f33c9');

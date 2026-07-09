@@ -3,8 +3,7 @@ package com.fiap.forkup.clean.arch.core.mapper;
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
 import com.fiap.forkup.clean.arch.core.domain.Usuario;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioRequestCreate;
-import com.fiap.forkup.clean.arch.core.dto.UsuarioReponseFull;
-import com.fiap.forkup.clean.arch.core.dto.UsuarioRequestUpdate;
+import com.fiap.forkup.clean.arch.core.dto.UsuarioResponseFull;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioResponsePartial;
 import lombok.AllArgsConstructor;
 
@@ -29,8 +28,8 @@ public class UsuarioMapper {
         );
     }
 
-    public UsuarioReponseFull domainToDtoFull(Usuario usuario) {
-        return new UsuarioReponseFull(
+    public UsuarioResponseFull domainToDtoFull(Usuario usuario) {
+        return new UsuarioResponseFull(
                 usuario.getId(),
                 usuario.getNome(),
                 usuario.getEmail(),

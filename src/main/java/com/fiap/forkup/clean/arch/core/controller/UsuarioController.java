@@ -6,7 +6,6 @@ import com.fiap.forkup.clean.arch.core.dto.*;
 import com.fiap.forkup.clean.arch.core.mapper.EnderecoMapper;
 import com.fiap.forkup.clean.arch.core.mapper.UsuarioMapper;
 import com.fiap.forkup.clean.arch.core.usecase.usuario.*;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
@@ -35,7 +34,7 @@ public class UsuarioController {
         return usuarioPagina.map(usuarioMapper::domainToDtoPartial);
     }
 
-    public UsuarioReponseFull buscarPorId(final UUID id) {
+    public UsuarioResponseFull buscarPorId(final UUID id) {
         Usuario usuario = buscarUsuarioPorIdUseCase.execute(id);
         return usuarioMapper.domainToDtoFull(usuario);
     }
@@ -45,7 +44,7 @@ public class UsuarioController {
         return criarUsuarioUseCase.execute(usuario);
     }
 
-    public UsuarioReponseFull alterar(final UUID id,final UsuarioRequestUpdate usuarioRequestUpdate) {
+    public UsuarioResponseFull alterar(final UUID id, final UsuarioRequestUpdate usuarioRequestUpdate) {
         Endereco endereco = enderecoMapper.toDomain(usuarioRequestUpdate.endereco());
         AtualizarUsuarioInput input = new AtualizarUsuarioInput(
                 usuarioRequestUpdate.nome(),
@@ -57,7 +56,7 @@ public class UsuarioController {
         return usuarioMapper.domainToDtoFull(usuarioAtualizado);
     }
 
-    public UsuarioReponseFull alterarTipoUsuario(UUID idUsuario, AtualizarTipoDoUsuarioRequest request) {
+    public UsuarioResponseFull alterarTipoUsuario(UUID idUsuario, AtualizarTipoDoUsuarioRequest request) {
         Usuario usuario = alterarTipoDoUsuarioUseCase.execute(idUsuario, request.idTipoUsuario());
         return usuarioMapper.domainToDtoFull(usuario);
     }

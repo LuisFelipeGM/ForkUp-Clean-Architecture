@@ -3,7 +3,9 @@ package com.fiap.forkup.clean.arch.infra.persistence.jpa.gateway;
 import com.fiap.forkup.clean.arch.core.domain.Usuario;
 import com.fiap.forkup.clean.arch.core.dto.Pagina;
 import com.fiap.forkup.clean.arch.core.gateway.UsuarioGateway;
+import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.EnderecoJpaEntity;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.UsuarioJpaEntity;
+import com.fiap.forkup.clean.arch.infra.persistence.jpa.repository.EnderecoRepository;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.repository.UsuarioRepository;
 import com.fiap.forkup.clean.arch.infra.persistence.mapper.PaginaMapper;
 import com.fiap.forkup.clean.arch.infra.persistence.mapper.UsuarioEntityMapper;
@@ -25,6 +27,8 @@ public class UsuarioJpaGateway implements UsuarioGateway {
     public static final UUID ID_CLIENTE = UUID.fromString("1e7b8f9e-1c2d-4a5b-8f9e-1c2d4a5b8f9e");
 
     private final UsuarioRepository usuarioRepository;
+
+    private final EnderecoRepository enderecoRepository;
 
     private final UsuarioEntityMapper usuarioEntityMapper;
 
@@ -56,6 +60,8 @@ public class UsuarioJpaGateway implements UsuarioGateway {
     @Override
     public UUID criar(Usuario usuario) {
         UsuarioJpaEntity usuarioJpa = usuarioEntityMapper.toEntity(usuario);
+        EnderecoJpaEntity endereco = enderecoRepository.save(usuarioJpa.getEndereco());
+        usuarioJpa.setEndereco(endereco);
         usuarioJpa = usuarioRepository.save(usuarioJpa);
 
         log.info("Usuario {} criado com sucesso", usuarioJpa.getLogin());
@@ -66,6 +72,8 @@ public class UsuarioJpaGateway implements UsuarioGateway {
     @Override
     public void atualizar(Usuario usuario) {
         UsuarioJpaEntity usuarioJpa = usuarioEntityMapper.toEntity(usuario);
+        EnderecoJpaEntity endereco = enderecoRepository.save(usuarioJpa.getEndereco());
+        usuarioJpa.setEndereco(endereco);
         usuarioRepository.save(usuarioJpa);
         log.info("Usuario {} atualizado com sucesso", usuarioJpa.getLogin());
     }
