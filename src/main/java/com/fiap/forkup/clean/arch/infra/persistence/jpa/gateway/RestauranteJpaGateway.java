@@ -4,8 +4,10 @@ import com.fiap.forkup.clean.arch.core.domain.ItemCardapio;
 import com.fiap.forkup.clean.arch.core.domain.Restaurante;
 import com.fiap.forkup.clean.arch.core.dto.Pagina;
 import com.fiap.forkup.clean.arch.core.gateway.RestauranteGateway;
+import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.EnderecoJpaEntity;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.ItemCardapioJpaEntity;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.RestauranteJpaEntity;
+import com.fiap.forkup.clean.arch.infra.persistence.jpa.repository.EnderecoRepository;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.repository.ItemCardapioRepository;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.repository.RestauranteRepository;
 import com.fiap.forkup.clean.arch.infra.persistence.mapper.ItemCardapioEntityMapper;
@@ -29,6 +31,8 @@ public class RestauranteJpaGateway implements RestauranteGateway {
     private final RestauranteRepository restauranteRepository;
 
     private final ItemCardapioRepository itemCardapioRepository;
+
+    private final EnderecoRepository enderecoRepository;
 
     private final RestauranteEntityMapper restauranteEntityMapper;
 
@@ -73,6 +77,10 @@ public class RestauranteJpaGateway implements RestauranteGateway {
     @Override
     public UUID criar(Restaurante restaurante) {
         RestauranteJpaEntity restauranteJpa = restauranteEntityMapper.toEntity(restaurante);
+
+        EnderecoJpaEntity enderecoJpa = enderecoRepository.save(restauranteJpa.getEnderecoJpaEntity());
+        restauranteJpa.setEnderecoJpaEntity(enderecoJpa);
+
         restauranteJpa = restauranteRepository.save(restauranteJpa);
 
         log.info("Restaurante {} criado com sucesso", restauranteJpa.getNome());
@@ -94,6 +102,10 @@ public class RestauranteJpaGateway implements RestauranteGateway {
     @Override
     public void atualizar(Restaurante restaurante) {
         RestauranteJpaEntity restauranteJpa = restauranteEntityMapper.toEntity(restaurante);
+
+        EnderecoJpaEntity enderecoJpa = enderecoRepository.save(restauranteJpa.getEnderecoJpaEntity());
+        restauranteJpa.setEnderecoJpaEntity(enderecoJpa);
+
         restauranteRepository.save(restauranteJpa);
         log.info("Restaurante {} atualizado com sucesso", restauranteJpa.getNome());
     }

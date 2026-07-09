@@ -8,5 +8,5 @@ public record UsuarioResponseFull(
         String email,
         String login,
         TipoUsuarioReponse tipoUsuario,
-        EnderecoResponse enderecoResponse
+        EnderecoResponse endereco
 ) { }

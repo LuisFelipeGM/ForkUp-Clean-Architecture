@@ -1,6 +1,7 @@
 package com.fiap.forkup.clean.arch.core.usecase.restaurante;
 
 import com.fiap.forkup.clean.arch.core.domain.Restaurante;
+import com.fiap.forkup.clean.arch.core.exception.DonoJaVinculadoRestauranteException;
 import com.fiap.forkup.clean.arch.core.exception.UsuarioDonoNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.RestauranteGateway;
 import com.fiap.forkup.clean.arch.core.gateway.UsuarioGateway;
@@ -23,6 +24,10 @@ public class CriarRestauranteUseCase {
     private void validarCriacao(final Restaurante restaurante) {
         if (!usuarioGateway.existsUsuarioDono(restaurante.getDono())) {
             throw new UsuarioDonoNaoEncontradoException("Dono do Restaurante não encontrado");
+        }
+
+        if (usuarioGateway.existsRestauranteVinculadoUsuario(restaurante.getDono())) {
+            throw new DonoJaVinculadoRestauranteException("Não é possível criar o restaurante pois o dono já está vinculado a outro restaurante.");
         }
     }
 
