@@ -7,6 +7,7 @@ import com.fiap.forkup.clean.arch.core.dto.RestauranteResponsePartial;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.ItemCardapioJpaEntity;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.RestauranteJpaEntity;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.UsuarioJpaEntity;
+import com.fiap.forkup.clean.arch.infra.web.exceptionhandler.ErrorResponse;
 import com.fiap.forkup.clean.arch.infra.web.vo.*;
 import org.junit.jupiter.api.*;
 import org.springframework.core.ParameterizedTypeReference;
@@ -225,6 +226,178 @@ public class RestauranteControllerIT extends BaseControllerIT {
     @Nested
     @DisplayName("Testes com cenário de erro")
     class Erros {
+
+        @Test
+        @DisplayName("Deve retornar 404 ao buscar restaurante inexistente")
+        void testRetornar404AoBuscarRestauranteInexistente() {
+            UUID idInexistente = UUID.randomUUID();
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/" + idInexistente), HttpMethod.GET, null, ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Restaurante não encontrado", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve retornar 400 ao tentar criar restaurante com dono inexistente")
+        void testRetornar404AoTentarCriarUmRestauranteComDonoInexistente() {
+            EnderecoVO enderecoVO = new EnderecoVO("Rua Exemplo", "123", "Apto 101", "Cidade Exemplo", "12345-678");
+            RestauranteCreateVO vo = new RestauranteCreateVO("Gendai", "Japonesa", "12:00 - 23:00", UUID.randomUUID(), enderecoVO);
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(url(BASE_URL), HttpMethod.POST, new HttpEntity<>(vo), ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Dono do Restaurante não encontrado", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve retornar 400 ao tentar criar restaurante com dono já vinculado a outro restaurante")
+        void testRetornar400AoTentarCriarUmRestauranteComDonoJaVinculado() {
+            UsuarioJpaEntity donoVinculado = createDono();
+            createRestaurante(UUID.randomUUID(), "Restaurante Existente", "Italiana", "10:00 - 22:00", donoVinculado, createEnderecoCompleto());
+
+            EnderecoVO enderecoVO = new EnderecoVO("Rua Exemplo", "123", "Apto 101", "Cidade Exemplo", "12345-678");
+            RestauranteCreateVO vo = new RestauranteCreateVO("Gendai", "Japonesa", "12:00 - 23:00", donoVinculado.getId(), enderecoVO);
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(url(BASE_URL), HttpMethod.POST, new HttpEntity<>(vo), ErrorResponse.class);
+
+            assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Não é possível criar o restaurante pois o dono já está vinculado a outro restaurante.", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve retornar 404 ao tentar alterar restaurante inexistente")
+        void testRetornar404AlterarRestauranteInexistente() {
+            EnderecoVO enderecoVO = new EnderecoVO("Rua Alterada", "456", "Apto 202", "Cidade Alterada", "98765-432");
+            RestauranteUpdateVO vo = new RestauranteUpdateVO("Gendai Alterado", "Asiática", "12:00 - 23:00", enderecoVO);
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/" + UUID.randomUUID()), HttpMethod.PUT, new HttpEntity<>(vo), ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Restaurante não encontrado", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve retornar 404 ao tentar alterar dono do restaurante inexistente")
+        void testRetornar404AlterarDonoDeRestauranteInexistente() {
+            UsuarioJpaEntity donoAntigo = createDono();
+            createRestaurante(UUID.randomUUID(), "Gendai", "Japonesa", "12:00 - 23:00", donoAntigo, createEnderecoCompleto());
+
+            UsuarioJpaEntity novoDono = createUsuario(UUID.randomUUID(), "Novo Dono", "novo.dono@example.com", "novoDono", "SenhaForte123@", dono, createEnderecoCompleto());
+            RestauranteAlterarDonoVO vo = new RestauranteAlterarDonoVO(novoDono.getId());
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/alterar-dono/" + UUID.randomUUID()), HttpMethod.PUT, new HttpEntity<>(vo), ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Restaurante não encontrado", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve retornar 404 ao tentar alterar para dono inexistente")
+        void testRetornar404AlterarDonoInexistente() {
+            UsuarioJpaEntity donoAntigo = createDono();
+            RestauranteJpaEntity restaurante = createRestaurante(UUID.randomUUID(), "Gendai", "Japonesa", "12:00 - 23:00", donoAntigo, createEnderecoCompleto());
+
+            createUsuario(UUID.randomUUID(), "Novo Dono", "novo.dono@example.com", "novoDono", "SenhaForte123@", dono, createEnderecoCompleto());
+            RestauranteAlterarDonoVO vo = new RestauranteAlterarDonoVO(UUID.randomUUID());
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/alterar-dono/" + restaurante.getId()), HttpMethod.PUT, new HttpEntity<>(vo), ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Dono do Restaurante não encontrado", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve retornar 400 ao tentar alterar para dono já vinculado a outro restaurante")
+        void testRetornar400AlterarDonoVinculado() {
+            UsuarioJpaEntity donoAntigo = createDono();
+            RestauranteJpaEntity restaurante = createRestaurante(UUID.randomUUID(), "Gendai", "Japonesa", "12:00 - 23:00", donoAntigo, createEnderecoCompleto());
+
+            UsuarioJpaEntity novoDono = createUsuario(UUID.randomUUID(), "Novo Dono", "novo.dono@example.com", "novoDono", "SenhaForte123@", dono, createEnderecoCompleto());
+            createRestaurante(UUID.randomUUID(), "Restaurante Existente", "Italiana", "10:00 - 22:00", novoDono, createEnderecoCompleto());
+            RestauranteAlterarDonoVO vo = new RestauranteAlterarDonoVO(novoDono.getId());
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/alterar-dono/" + restaurante.getId()), HttpMethod.PUT, new HttpEntity<>(vo), ErrorResponse.class);
+
+            assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Dono do Restaurante já está vinculado a outro restaurante.", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve retornar 404 ao tentar deletar restaurante inexistente")
+        void testRetornar404DeletarRestauranteInexistente() {
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/" + UUID.randomUUID()), HttpMethod.DELETE, null, ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Restaurante não encontrado", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve Retornar 404 ao tentar listar cardápio do restaurante inexistente")
+        void testRetornar404ListarCardapioDoRestauranteInexistente() {
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/" + UUID.randomUUID() + "/cardapio"), HttpMethod.GET, null, ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Restaurante não encontrado", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve Retornar 404 ao tentar criar item no cardápio do restaurante inexistente")
+        void testRetornar404CriarItemNoCardapioDoRestauranteInexistente() {
+            ItemCardapioVO vo = new ItemCardapioVO("Sushi", "Delicioso sushi", new BigDecimal("29.90"), true, "http://example.com/sushi.jpg");
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/" + UUID.randomUUID() + "/cardapio"), HttpMethod.POST, new HttpEntity<>(vo), ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Restaurante não encontrado", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve Retornar 404 ao tentar atualizar item do cardápio do restaurante inexistente")
+        void testRetornar404AtualizarItemDoCardapioDoRestauranteInexistente() {
+
+            ItemCardapioVO vo = new ItemCardapioVO("Sushi Atualizado", "Delicioso sushi atualizado", new BigDecimal("39.90"), true, "http://example.com/sushi_atualizado.jpg");
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/" + UUID.randomUUID() + "/cardapio/" + UUID.randomUUID()), HttpMethod.PUT, new HttpEntity<>(vo), ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Restaurante não encontrado", response.getBody().message());
+        }
+
+        @Test
+        @DisplayName("Deve Retornar 404 ao tentar excluir item do cardápio do restaurante inexistente")
+        void testRetornar404ExcluirItemDoCardapioDoRestauranteInexistente() {
+            RestauranteJpaEntity restaurante = createRestaurante(UUID.randomUUID(), "Gendai", "Japonesa", "12:00 - 23:00", createDono(), createEnderecoCompleto());
+            ItemCardapioJpaEntity item = createItemCardapio(UUID.randomUUID(), "Sushi", "Delicioso sushi", new BigDecimal("29.90"), true, "http://example.com/sushi.jpg", restaurante);
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL + "/" + UUID.randomUUID() + "/cardapio/" + UUID.randomUUID()), HttpMethod.DELETE, null, ErrorResponse.class);
+
+            assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            assertNotNull(response.getBody());
+            assertEquals("Restaurante não encontrado", response.getBody().message());
+        }
 
     }
 

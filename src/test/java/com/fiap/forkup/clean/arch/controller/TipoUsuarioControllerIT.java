@@ -191,6 +191,17 @@ public class TipoUsuarioControllerIT extends BaseControllerIT{
             assertEquals("Não é possível excluir o tipo de usuário pois existem usuários associados a ele.", error.message());
         }
 
+        @Test
+        @DisplayName("Deve retornar 400 ao tentar criar um TipoUsuario com descricao nula")
+        void testRetornar400CriarTipoUsuarioComDescricaoNula() {
+            TipoUsuarioVO vo = new TipoUsuarioVO("");
+
+            ResponseEntity<ErrorResponse> response = restTemplate.exchange(
+                    url(BASE_URL), HttpMethod.POST, new HttpEntity<>(vo), ErrorResponse.class);
+
+            assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+        }
+
     }
 
     @BeforeEach

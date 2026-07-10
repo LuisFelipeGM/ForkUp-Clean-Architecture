@@ -7,13 +7,4 @@ import java.util.UUID;
 public record TipoUsuarioResponse(
         UUID id,
         String descricao
-) {
-
-    public static TipoUsuarioResponse fromDomain(TipoUsuario tipoUsuario) {
-        return new TipoUsuarioResponse(
-                tipoUsuario.getId(),
-                tipoUsuario.getDescricao()
-        );
-    }
-
-}
+) { }

@@ -1,5 +1,6 @@
 package com.fiap.forkup.clean.arch.infra.web.vo;
 
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
@@ -10,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 public class TipoUsuarioVO {
 
-    @NotNull(message = "A descrição do tipo de usuário não pode ser nula")
+    @NotBlank(message = "A descrição do tipo de usuário não pode ser nula")
     private String descricao;
 
 }
