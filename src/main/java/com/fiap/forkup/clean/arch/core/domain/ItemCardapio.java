@@ -48,7 +48,7 @@ public class ItemCardapio {
     }
 
     private void validarDescricao(String descricao) {
-        if (descricao != null && descricao.isBlank())
+        if (descricao == null || descricao.isBlank())
             throw new ItemCardapioInvalidoException("Descrição do item do cardápio não pode ser vazia.");
     }
 

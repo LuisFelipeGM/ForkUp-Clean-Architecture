@@ -1,6 +1,7 @@
 package com.fiap.forkup.clean.arch.usecase.tipousuario;
 
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
+import com.fiap.forkup.clean.arch.core.exception.TipoUsuarioJaCadastradoException;
 import com.fiap.forkup.clean.arch.core.exception.TipoUsuarioNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.TipoUsuarioGateway;
 import com.fiap.forkup.clean.arch.core.usecase.tipousuario.AlterarDescricaoTipoUsuarioUseCase;
@@ -56,6 +57,23 @@ public class AlterarDescricaoTipoUsuarioUseCaseTest {
         verify(tipoUsuarioGateway, times(1)).buscarPorId(any());
         verify(tipoUsuarioGateway, never()).atualizar(any());
 
+    }
+
+    @Test
+    @DisplayName("Deve lançar exceção quando tentar alterar a descrição de um TipoUsuario para uma descrição já existente")
+    void deveLancarExcecaoTipoDescricaoJaCadatrado() {
+        TipoUsuario tipoUsuario = new TipoUsuario(UUID.randomUUID(), "Cliente");
+
+        when(tipoUsuarioGateway.buscarPorId(any())).thenReturn(Optional.of(tipoUsuario));
+        when(tipoUsuarioGateway.existsByDescricao(tipoUsuario.getDescricao())).thenReturn(true);
+
+        TipoUsuarioJaCadastradoException exception = assertThrows(TipoUsuarioJaCadastradoException.class, () ->
+                alterarDescricaoTipoUsuarioUseCase.executar(tipoUsuario.getId(), tipoUsuario.getDescricao()));
+
+        assertEquals("Tipo Usuário já cadastrado: " + tipoUsuario.getDescricao(), exception.getMessage());
+        verify(tipoUsuarioGateway, times(1)).buscarPorId(tipoUsuario.getId());
+        verify(tipoUsuarioGateway, times(1)).existsByDescricao(tipoUsuario.getDescricao());
+        verify(tipoUsuarioGateway, never()).atualizar(any());
     }
 
 }
