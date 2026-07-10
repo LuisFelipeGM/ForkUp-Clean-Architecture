@@ -1,10 +1,7 @@
 package com.fiap.forkup.clean.arch.controller;
 
 import com.fiap.forkup.clean.arch.config.TestConfig;
-import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.EnderecoJpaEntity;
-import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.RestauranteJpaEntity;
-import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.TipoUsuarioJpaEntity;
-import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.UsuarioJpaEntity;
+import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.*;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.repository.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +11,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -118,6 +116,10 @@ public abstract class BaseControllerIT extends AbstractControllerIT {
         return usuario;
     }
 
+    protected UsuarioJpaEntity createDono() {
+        return createUsuario(UUID.randomUUID(), "Dono Teste", "dono.teste@gmail.com", "dono.teste", "SenhaForte123@", dono, createEnderecoCompleto());
+    }
+
     protected RestauranteJpaEntity builderRestaurante(UUID id, String nome, String tipoCozinha, String horarioFuncionamento, EnderecoJpaEntity endereco, UsuarioJpaEntity dono) {
         return RestauranteJpaEntity.builder()
                 .id(id)
@@ -133,6 +135,24 @@ public abstract class BaseControllerIT extends AbstractControllerIT {
         RestauranteJpaEntity restaurante = builderRestaurante(id, nome, tipoCozinha, horarioFuncionamento, endereco, dono);
         restaurante = restauranteRepository.save(restaurante);
         return restaurante;
+    }
+
+    protected ItemCardapioJpaEntity builderItemCardapio(UUID id, String nome, String descricao, BigDecimal preco, Boolean apenasRestaurante, String fotoUrl, RestauranteJpaEntity restaurante) {
+        return ItemCardapioJpaEntity.builder()
+                .id(id)
+                .nome(nome)
+                .descricao(descricao)
+                .preco(preco)
+                .apenasRestaurante(apenasRestaurante)
+                .fotoUrl(fotoUrl)
+                .restaurante(restaurante)
+                .build();
+    }
+
+    protected ItemCardapioJpaEntity createItemCardapio(UUID id, String nome, String descricao, BigDecimal preco, Boolean apenasRestaurante, String fotoUrl, RestauranteJpaEntity restaurante) {
+        ItemCardapioJpaEntity itemCardapio = builderItemCardapio(id, nome, descricao, preco, apenasRestaurante, fotoUrl, restaurante);
+        itemCardapio = itemCardapioRepository.save(itemCardapio);
+        return itemCardapio;
     }
 
 }

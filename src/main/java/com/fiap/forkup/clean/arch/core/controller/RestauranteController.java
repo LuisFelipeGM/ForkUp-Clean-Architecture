@@ -93,8 +93,14 @@ public class RestauranteController {
     }
 
     public ItemCardapioResponse atualizarItemDoCardapio(UUID idRestaurante, UUID itemId, ItemCardapioRequest itemCardapioRequest) {
-        ItemCardapio itemCardapio = itemCardapioMapper.requestToDomain(itemCardapioRequest);
-        ItemCardapio itemAtualizado = atualizarItemCardapioUseCase.execute(idRestaurante, itemId, itemCardapio);
+        AtualizarItemCardapioInput input = new AtualizarItemCardapioInput(
+                itemCardapioRequest.nome(),
+                itemCardapioRequest.descricao(),
+                itemCardapioRequest.preco(),
+                itemCardapioRequest.apenasRestaurante(),
+                itemCardapioRequest.pathFoto()
+        );
+        ItemCardapio itemAtualizado = atualizarItemCardapioUseCase.execute(idRestaurante, itemId, input);
         return itemCardapioMapper.domainToDto(itemAtualizado);
     }
 

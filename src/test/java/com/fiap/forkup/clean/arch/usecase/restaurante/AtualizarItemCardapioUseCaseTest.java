@@ -3,6 +3,7 @@ package com.fiap.forkup.clean.arch.usecase.restaurante;
 import com.fiap.forkup.clean.arch.core.domain.Endereco;
 import com.fiap.forkup.clean.arch.core.domain.ItemCardapio;
 import com.fiap.forkup.clean.arch.core.domain.Restaurante;
+import com.fiap.forkup.clean.arch.core.dto.AtualizarItemCardapioInput;
 import com.fiap.forkup.clean.arch.core.exception.ItemCardapioNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.exception.RestauranteNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.gateway.RestauranteGateway;
@@ -39,8 +40,7 @@ public class AtualizarItemCardapioUseCaseTest {
         ItemCardapio itemExistente = criarItemCardapio();
         Restaurante restaurante = criarRestauranteComCardapio(itemExistente);
 
-        ItemCardapio novoItem = new ItemCardapio(
-                UUID.randomUUID(),
+        AtualizarItemCardapioInput novoItem = new AtualizarItemCardapioInput(
                 "Pizza Calabresa",
                 "Calabresa, mussarela e cebola",
                 new BigDecimal("34.90"),
@@ -53,7 +53,7 @@ public class AtualizarItemCardapioUseCaseTest {
         ItemCardapio retorno = atualizarItemCardapioUseCase.execute(restaurante.getId(), itemExistente.getId(), novoItem);
 
         assertNotNull(retorno);
-        assertEquals(novoItem.getNome(), retorno.getNome());
+        assertEquals(novoItem.nome(), retorno.getNome());
         verify(restauranteGateway, times(1)).buscarPorIdComCardapio(restaurante.getId());
         verify(restauranteGateway, times(1)).atualizar(any());
     }
@@ -63,7 +63,7 @@ public class AtualizarItemCardapioUseCaseTest {
     void deveLancarExcecaoRestauranteNaoEncontrado() {
         UUID idRestaurante = UUID.randomUUID();
         UUID idItem = UUID.randomUUID();
-        ItemCardapio itemCardapio = criarItemCardapio();
+        AtualizarItemCardapioInput itemCardapio = criarAtualizarItemCardapioInput();
 
         when(restauranteGateway.buscarPorIdComCardapio(idRestaurante)).thenReturn(Optional.empty());
 
@@ -79,11 +79,11 @@ public class AtualizarItemCardapioUseCaseTest {
     void deveLancarExcecaoItemNaoEncontrado() {
         Restaurante restaurante = criarRestaurante();
         UUID idItemInexistente = UUID.randomUUID();
-        ItemCardapio itemCardapio = criarItemCardapio();
 
         when(restauranteGateway.buscarPorIdComCardapio(restaurante.getId())).thenReturn(Optional.of(restaurante));
 
-        ItemCardapioNaoEncontradoException exception = assertThrows(ItemCardapioNaoEncontradoException.class, () -> atualizarItemCardapioUseCase.execute(restaurante.getId(), idItemInexistente, itemCardapio));
+        AtualizarItemCardapioInput itemCardapioInput = criarAtualizarItemCardapioInput();
+        ItemCardapioNaoEncontradoException exception = assertThrows(ItemCardapioNaoEncontradoException.class, () -> atualizarItemCardapioUseCase.execute(restaurante.getId(), idItemInexistente, itemCardapioInput));
 
         assertEquals("Item do cardápio não encontrado.", exception.getMessage());
         verify(restauranteGateway, times(1)).buscarPorIdComCardapio(restaurante.getId());
@@ -122,6 +122,16 @@ public class AtualizarItemCardapioUseCaseTest {
     private ItemCardapio criarItemCardapio() {
         return new ItemCardapio(
                 UUID.randomUUID(),
+                "Pizza Margherita",
+                "Mussarela, tomate e manjericão",
+                new BigDecimal("29.90"),
+                false,
+                "https://example.com/pizza.jpg"
+        );
+    }
+
+    private AtualizarItemCardapioInput criarAtualizarItemCardapioInput() {
+        return new AtualizarItemCardapioInput(
                 "Pizza Margherita",
                 "Mussarela, tomate e manjericão",
                 new BigDecimal("29.90"),

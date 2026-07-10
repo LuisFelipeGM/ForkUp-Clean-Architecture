@@ -33,10 +33,10 @@ public class TipoUsuarioControllerIT extends BaseControllerIT{
             ResponseEntity<List<TipoUsuarioResponse>> response = restTemplate
                     .exchange(url(BASE_URL), HttpMethod.GET, null, new ParameterizedTypeReference<List<TipoUsuarioResponse>>() {});
 
-            assertNotNull(response.getBody());
-            assertFalse(response.getBody().isEmpty());
-            assertEquals(HttpStatus.OK, response.getStatusCode());
-            assertEquals(2, response.getBody().size());
+                assertNotNull(response.getBody());
+                assertFalse(response.getBody().isEmpty());
+                assertEquals(HttpStatus.OK, response.getStatusCode());
+                assertEquals(2, response.getBody().size());
         }
 
         @Test

@@ -1,10 +1,8 @@
 package com.fiap.forkup.clean.arch.controller;
 
-import com.fiap.forkup.clean.arch.core.dto.AtualizarUsuarioInput;
 import com.fiap.forkup.clean.arch.core.dto.Pagina;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioResponseFull;
 import com.fiap.forkup.clean.arch.core.dto.UsuarioResponsePartial;
-import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.EnderecoJpaEntity;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.UsuarioJpaEntity;
 import com.fiap.forkup.clean.arch.infra.web.exceptionhandler.ErrorResponse;
 import com.fiap.forkup.clean.arch.infra.web.vo.EnderecoVO;
@@ -13,7 +11,6 @@ import com.fiap.forkup.clean.arch.infra.web.vo.UsuarioCreateVO;
 import com.fiap.forkup.clean.arch.infra.web.vo.UsuarioUpdateVO;
 import org.junit.jupiter.api.*;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -126,7 +123,7 @@ public class UsuarioControllerIT extends BaseControllerIT {
 
         @Test
         @DisplayName("Deve deletar um usuário com sucesso")
-        void deletarUsuario() {
+        void testDeletarUsuario() {
             UsuarioJpaEntity usuario = createUsuario(UUID.randomUUID(), "João Silva", "joao.silva@gmail.com",
                     "JoaoSilvaLA", "SenhaForte123@", cliente, createEnderecoCompleto());
 
