@@ -4,13 +4,13 @@ import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
 
 import java.util.UUID;
 
-public record TipoUsuarioReponse(
+public record TipoUsuarioResponse(
         UUID id,
         String descricao
 ) {
 
-    public static TipoUsuarioReponse fromDomain(TipoUsuario tipoUsuario) {
-        return new TipoUsuarioReponse(
+    public static TipoUsuarioResponse fromDomain(TipoUsuario tipoUsuario) {
+        return new TipoUsuarioResponse(
                 tipoUsuario.getId(),
                 tipoUsuario.getDescricao()
         );

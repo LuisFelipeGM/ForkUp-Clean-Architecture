@@ -23,7 +23,7 @@ public class RestauranteEntityMapper {
                 .nome(restaurante.getNome())
                 .tipoCozinha(restaurante.getTipoCozinha())
                 .horarioFuncionamento(restaurante.getHorarioFuncionamento())
-                .enderecoJpaEntity(enderecoEntityMapper.toEntity(restaurante.getEndereco()))
+                .endereco(enderecoEntityMapper.toEntity(restaurante.getEndereco()))
                 .dono(UsuarioJpaEntity.builder().id(restaurante.getDono()).build())
                 .cardapio(itemCardapioEntityMapper.toEntityList(restaurante.getCardapio()))
                 .build();
@@ -44,7 +44,7 @@ public class RestauranteEntityMapper {
                 jpaEntity.getNome(),
                 jpaEntity.getTipoCozinha(),
                 jpaEntity.getHorarioFuncionamento(),
-                enderecoEntityMapper.toDomain(jpaEntity.getEnderecoJpaEntity()),
+                enderecoEntityMapper.toDomain(jpaEntity.getEndereco()),
                 jpaEntity.getDono().getId(),
                 itemCardapioEntityMapper.toDomainList(jpaEntity.getCardapio())
         );

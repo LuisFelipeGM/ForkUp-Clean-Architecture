@@ -50,7 +50,7 @@ public class DeletarTipoUsuarioUseCaseTest {
             deletarTipoUsuarioUseCase.execute(UUID.randomUUID());
         });
 
-        assertEquals("Tipo de usuário não encontrado", exception.getMessage());
+        assertEquals("Tipo Usuário não encontrado", exception.getMessage());
         verify(tipoUsuarioGateway, times(1)).existsTipoUsuario(any(UUID.class));
         verify(tipoUsuarioGateway, never()).deletar(any(UUID.class));
     }

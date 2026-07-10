@@ -19,7 +19,7 @@ public class CriarTipoUsuarioUseCase {
 
     private void validarTipoUsuarioUnico(TipoUsuario tipoUsuario) {
         if(tipoUsuarioGateway.existsByDescricao(tipoUsuario.getDescricao()))
-            throw new TipoUsuarioJaCadastradoException("Tipo Usuário já cadastrado: " + tipoUsuario.getDescricao());
+                throw new TipoUsuarioJaCadastradoException("Tipo Usuário já cadastrado: " + tipoUsuario.getDescricao());
     }
 
 }

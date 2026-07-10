@@ -1,7 +1,7 @@
 package com.fiap.forkup.clean.arch.core.mapper;
 
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
-import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioReponse;
+import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioResponse;
 import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioRequest;
 
 public class TipoUsuarioMapper {
@@ -10,7 +10,7 @@ public class TipoUsuarioMapper {
         return new TipoUsuario(request.descricao());
     }
 
-    public TipoUsuarioReponse domainToDto(TipoUsuario tipoUsuario) {
-        return new TipoUsuarioReponse(tipoUsuario.getId(), tipoUsuario.getDescricao());
+    public TipoUsuarioResponse domainToDto(TipoUsuario tipoUsuario) {
+        return new TipoUsuarioResponse(tipoUsuario.getId(), tipoUsuario.getDescricao());
     }
 }

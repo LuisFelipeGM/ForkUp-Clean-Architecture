@@ -23,11 +23,10 @@ public class UsuarioApiController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Page<UsuarioResponsePartial> listarTodosUsuarios(
+    public Pagina<UsuarioResponsePartial> listarTodosUsuarios(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "size", defaultValue = "10") Integer size) {
-        Pagina<UsuarioResponsePartial> pagina = usuarioController.listarTodosPaginado(new PaginacaoRequest(page, size));
-        return PaginaMapper.toPage(pagina);
+        return usuarioController.listarTodosPaginado(new PaginacaoRequest(page, size));
     }
 
     @GetMapping("/{id}")

@@ -7,6 +7,6 @@ public record UsuarioResponseFull(
         String nome,
         String email,
         String login,
-        TipoUsuarioReponse tipoUsuario,
+        TipoUsuarioResponse tipoUsuario,
         EnderecoResponse endereco
 ) { }
