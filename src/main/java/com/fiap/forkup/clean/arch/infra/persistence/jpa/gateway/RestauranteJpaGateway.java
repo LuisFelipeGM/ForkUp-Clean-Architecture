@@ -78,8 +78,8 @@ public class RestauranteJpaGateway implements RestauranteGateway {
     public UUID criar(Restaurante restaurante) {
         RestauranteJpaEntity restauranteJpa = restauranteEntityMapper.toEntity(restaurante);
 
-        EnderecoJpaEntity enderecoJpa = enderecoRepository.save(restauranteJpa.getEnderecoJpaEntity());
-        restauranteJpa.setEnderecoJpaEntity(enderecoJpa);
+        EnderecoJpaEntity enderecoJpa = enderecoRepository.save(restauranteJpa.getEndereco());
+        restauranteJpa.setEndereco(enderecoJpa);
 
         restauranteJpa = restauranteRepository.save(restauranteJpa);
 
@@ -103,8 +103,8 @@ public class RestauranteJpaGateway implements RestauranteGateway {
     public void atualizar(Restaurante restaurante) {
         RestauranteJpaEntity restauranteJpa = restauranteEntityMapper.toEntity(restaurante);
 
-        EnderecoJpaEntity enderecoJpa = enderecoRepository.save(restauranteJpa.getEnderecoJpaEntity());
-        restauranteJpa.setEnderecoJpaEntity(enderecoJpa);
+        EnderecoJpaEntity enderecoJpa = enderecoRepository.save(restauranteJpa.getEndereco());
+        restauranteJpa.setEndereco(enderecoJpa);
 
         restauranteRepository.save(restauranteJpa);
         log.info("Restaurante {} atualizado com sucesso", restauranteJpa.getNome());

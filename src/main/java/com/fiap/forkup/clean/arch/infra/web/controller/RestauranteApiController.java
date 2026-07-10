@@ -25,11 +25,10 @@ public class RestauranteApiController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public Page<RestauranteResponsePartial> listarTodosRestaurantes(
+    public Pagina<RestauranteResponsePartial> listarTodosRestaurantes(
             @RequestParam(value = "page", defaultValue = "0") Integer page,
             @RequestParam(value = "size", defaultValue = "10") Integer size) {
-        Pagina<RestauranteResponsePartial> pagina = restauranteController.listarTodosPaginado(new PaginacaoRequest(page, size));
-        return PaginaMapper.toPage(pagina);
+         return restauranteController.listarTodosPaginado(new PaginacaoRequest(page, size));
     }
 
     @GetMapping("/{id}")

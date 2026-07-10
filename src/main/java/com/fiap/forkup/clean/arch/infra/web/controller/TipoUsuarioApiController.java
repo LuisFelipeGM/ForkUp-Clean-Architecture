@@ -1,7 +1,7 @@
 package com.fiap.forkup.clean.arch.infra.web.controller;
 
 import com.fiap.forkup.clean.arch.core.controller.TipoUsuarioController;
-import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioReponse;
+import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioResponse;
 import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioRequest;
 import com.fiap.forkup.clean.arch.infra.web.vo.TipoUsuarioVO;
 import jakarta.validation.Valid;
@@ -21,13 +21,13 @@ public class TipoUsuarioApiController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<TipoUsuarioReponse> listarTiposUsuario() {
+    public List<TipoUsuarioResponse> listarTiposUsuario() {
         return tipoUsuarioController.listarTodos();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public TipoUsuarioReponse buscarPorId(@PathVariable UUID id) {
+    public TipoUsuarioResponse buscarPorId(@PathVariable UUID id) {
         return tipoUsuarioController.buscarPorId(id);
     }
 
@@ -40,7 +40,7 @@ public class TipoUsuarioApiController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public TipoUsuarioReponse alterarDescricao(@PathVariable UUID id, @Valid @RequestBody TipoUsuarioVO tipoUsuarioVO) {
+    public TipoUsuarioResponse alterarDescricao(@PathVariable UUID id, @Valid @RequestBody TipoUsuarioVO tipoUsuarioVO) {
         TipoUsuarioRequest tipoUsuarioRequest = mapToDto(tipoUsuarioVO);
         return tipoUsuarioController.alterarDescricao(id, tipoUsuarioRequest);
     }

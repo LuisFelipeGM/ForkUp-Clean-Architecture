@@ -22,12 +22,5 @@ public class PaginaMapper {
         );
     }
 
-    public static <T>Page<T> toPage(Pagina<T> pagina) {
-        return new PageImpl<>(
-                pagina.conteudo(),
-                Pageable.ofSize(pagina.tamanho()).withPage(pagina.pagina()),
-                pagina.totalPaginas()
-        );
-    }
 
 }

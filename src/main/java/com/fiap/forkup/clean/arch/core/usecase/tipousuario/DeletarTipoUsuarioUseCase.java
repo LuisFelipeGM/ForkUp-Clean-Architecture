@@ -19,7 +19,7 @@ public class DeletarTipoUsuarioUseCase {
 
     private void validarExclusao(UUID id) {
         if (!tipoUsuarioGateway.existsTipoUsuario(id))
-            throw new TipoUsuarioNaoEncontradoException("Tipo de usuário não encontrado");
+            throw new TipoUsuarioNaoEncontradoException("Tipo Usuário não encontrado");
 
         if (tipoUsuarioGateway.existsUsuarioComEsteTipo(id))
             throw new TipoUsuarioComUsuarioVinculadoException("Não é possível excluir o tipo de usuário pois existem usuários associados a ele.");

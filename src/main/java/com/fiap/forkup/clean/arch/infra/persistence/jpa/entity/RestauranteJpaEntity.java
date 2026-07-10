@@ -31,7 +31,7 @@ public class RestauranteJpaEntity {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "endereco_id")
-    private EnderecoJpaEntity enderecoJpaEntity;
+    private EnderecoJpaEntity endereco;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "dono_id")

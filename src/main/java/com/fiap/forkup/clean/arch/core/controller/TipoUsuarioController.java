@@ -1,11 +1,10 @@
 package com.fiap.forkup.clean.arch.core.controller;
 
 import com.fiap.forkup.clean.arch.core.domain.TipoUsuario;
-import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioReponse;
+import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioResponse;
 import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioRequest;
 import com.fiap.forkup.clean.arch.core.mapper.TipoUsuarioMapper;
 import com.fiap.forkup.clean.arch.core.usecase.tipousuario.*;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -27,14 +26,14 @@ public class TipoUsuarioController {
 
     private final TipoUsuarioMapper tipoUsuarioMapper;
 
-    public List<TipoUsuarioReponse> listarTodos() {
+    public List<TipoUsuarioResponse> listarTodos() {
         List<TipoUsuario> tiposUsuario = listarTiposUsuarioUseCase.execute();
         return tiposUsuario.stream()
                 .map(tipoUsuarioMapper::domainToDto)
                 .collect(Collectors.toList());
     }
 
-    public TipoUsuarioReponse buscarPorId(UUID id) {
+    public TipoUsuarioResponse buscarPorId(UUID id) {
         TipoUsuario tipoUsuario = buscarTipoUsuarioPorIdUseCase.execute(id);
         return tipoUsuarioMapper.domainToDto(tipoUsuario);
     }
@@ -44,7 +43,7 @@ public class TipoUsuarioController {
         return criarTipoUsuarioUseCase.executar(tipoUsuario);
     }
 
-    public TipoUsuarioReponse alterarDescricao(UUID id, TipoUsuarioRequest tipoUsuarioRequest) {
+    public TipoUsuarioResponse alterarDescricao(UUID id, TipoUsuarioRequest tipoUsuarioRequest) {
         TipoUsuario tipoUsuario = alterarDescricaoTipoUsuarioUseCase.executar(id, tipoUsuarioRequest.descricao());
         return tipoUsuarioMapper.domainToDto(tipoUsuario);
     }

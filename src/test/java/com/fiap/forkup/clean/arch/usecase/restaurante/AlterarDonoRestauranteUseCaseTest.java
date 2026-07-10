@@ -104,7 +104,7 @@ public class AlterarDonoRestauranteUseCaseTest {
 
         DonoJaVinculadoRestauranteException exception = assertThrows(DonoJaVinculadoRestauranteException.class, () -> alterarDonoRestauranteUseCase.execute(restaurante.getId(), novoDonoId));
 
-        assertEquals("Não é possível criar o restaurante pois o dono já está vinculado a outro restaurante.", exception.getMessage());
+        assertEquals("Dono do Restaurante já está vinculado a outro restaurante.", exception.getMessage());
         verify(restauranteGateway, times(1)).buscarPorId(restaurante.getId());
         verify(usuarioGateway, times(1)).existsUsuarioDono(novoDonoId);
         verify(usuarioGateway, times(1)).existsRestauranteVinculadoUsuario(novoDonoId);

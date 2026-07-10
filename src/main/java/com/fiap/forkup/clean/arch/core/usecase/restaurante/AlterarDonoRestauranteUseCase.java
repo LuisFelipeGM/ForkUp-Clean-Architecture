@@ -39,7 +39,7 @@ public class AlterarDonoRestauranteUseCase {
         }
 
         if (usuarioGateway.existsRestauranteVinculadoUsuario(idDono)) {
-            throw new DonoJaVinculadoRestauranteException("Não é possível criar o restaurante pois o dono já está vinculado a outro restaurante.");
+            throw new DonoJaVinculadoRestauranteException("Dono do Restaurante já está vinculado a outro restaurante.");
         }
     }
 
