@@ -3,6 +3,7 @@ package com.fiap.forkup.clean.arch.core.domain;
 import com.fiap.forkup.clean.arch.core.exception.ItemCardapioNaoEncontradoException;
 import com.fiap.forkup.clean.arch.core.exception.RestauranteInvalidoException;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Restaurante {
     private String tipoCozinha;
     private String horarioFuncionamento;
     private Endereco endereco;
+    @Setter
     private String nomeDono;
     private UUID dono;
     private List<ItemCardapio> cardapio = new ArrayList<>();
@@ -57,10 +59,6 @@ public class Restaurante {
                 .orElseThrow(() -> new ItemCardapioNaoEncontradoException("Item do cardápio não encontrado."));
 
         this.cardapio.remove(item);
-    }
-
-    public void setNomeDono(String nomeDono) {
-        this.nomeDono = nomeDono;
     }
 
     public void alterarRestaurante(String nome, String tipoCozinha, String horarioFuncionamento, Endereco endereco) {
