@@ -1,8 +1,8 @@
 package com.fiap.forkup.clean.arch.controller;
 
 import com.fiap.forkup.clean.arch.core.dto.Pagina;
-import com.fiap.forkup.clean.arch.core.dto.UsuarioResponseFull;
-import com.fiap.forkup.clean.arch.core.dto.UsuarioResponsePartial;
+import com.fiap.forkup.clean.arch.infra.web.dto.UsuarioResponseFull;
+import com.fiap.forkup.clean.arch.infra.web.dto.UsuarioResponsePartial;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.UsuarioJpaEntity;
 import com.fiap.forkup.clean.arch.infra.web.exceptionhandler.ErrorResponse;
 import com.fiap.forkup.clean.arch.infra.web.vo.EnderecoVO;

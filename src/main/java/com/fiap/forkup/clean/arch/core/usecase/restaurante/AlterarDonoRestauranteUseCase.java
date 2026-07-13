@@ -18,9 +18,8 @@ public class AlterarDonoRestauranteUseCase {
     private final UsuarioGateway usuarioGateway;
 
     public Restaurante execute(UUID idRestaurante, UUID idDono) {
-        var restaurante = restauranteGateway.buscarPorId(idRestaurante).orElseThrow(() -> {
-            throw new RestauranteNaoEncontradoException("Restaurante não encontrado");
-        });
+        var restaurante = restauranteGateway.buscarPorId(idRestaurante)
+                .orElseThrow(() -> new RestauranteNaoEncontradoException("Restaurante não encontrado"));
 
         validarDono(idDono);
 

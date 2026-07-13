@@ -2,8 +2,8 @@ package com.fiap.forkup.clean.arch.core.mapper;
 
 import com.fiap.forkup.clean.arch.core.domain.Restaurante;
 import com.fiap.forkup.clean.arch.core.dto.RestauranteRequestCreate;
-import com.fiap.forkup.clean.arch.core.dto.RestauranteResponseFull;
-import com.fiap.forkup.clean.arch.core.dto.RestauranteResponsePartial;
+import com.fiap.forkup.clean.arch.infra.web.dto.RestauranteResponseFull;
+import com.fiap.forkup.clean.arch.infra.web.dto.RestauranteResponsePartial;
 import lombok.AllArgsConstructor;
 
 import java.util.UUID;

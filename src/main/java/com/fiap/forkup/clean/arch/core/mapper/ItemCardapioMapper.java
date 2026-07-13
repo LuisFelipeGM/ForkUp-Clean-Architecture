@@ -2,7 +2,7 @@ package com.fiap.forkup.clean.arch.core.mapper;
 
 import com.fiap.forkup.clean.arch.core.domain.ItemCardapio;
 import com.fiap.forkup.clean.arch.core.dto.ItemCardapioRequest;
-import com.fiap.forkup.clean.arch.core.dto.ItemCardapioResponse;
+import com.fiap.forkup.clean.arch.infra.web.dto.ItemCardapioResponse;
 import lombok.AllArgsConstructor;
 
 import java.util.UUID;

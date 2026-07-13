@@ -1,6 +1,6 @@
 package com.fiap.forkup.clean.arch.controller;
 
-import com.fiap.forkup.clean.arch.core.dto.TipoUsuarioResponse;
+import com.fiap.forkup.clean.arch.infra.web.dto.TipoUsuarioResponse;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.EnderecoJpaEntity;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.TipoUsuarioJpaEntity;
 import com.fiap.forkup.clean.arch.infra.web.exceptionhandler.ErrorResponse;
