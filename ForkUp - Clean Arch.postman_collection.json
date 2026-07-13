@@ -964,14 +964,14 @@
                   }
                 },
                 "url": {
-                  "raw": "{{baseUrl}}/usuario/alterar-tipo/809e9b65-d878-4bef-81bd-74379bf24eb3",
+                  "raw": "{{baseUrl}}/usuario/alterar-tipo/615c8f57-6bf2-4426-a3bb-3a59faa70b95",
                   "host": [
                     "{{baseUrl}}"
                   ],
                   "path": [
                     "usuario",
                     "alterar-tipo",
-                    "809e9b65-d878-4bef-81bd-74379bf24eb3"
+                    "615c8f57-6bf2-4426-a3bb-3a59faa70b95"
                   ]
                 }
               },
