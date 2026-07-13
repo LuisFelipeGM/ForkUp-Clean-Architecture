@@ -14,6 +14,23 @@ services:
     networks:
       - forkup_network
 
+  app:
+    ###### Use o build para criar a imagem localmente, ou descomente a linha de image para usar uma imagem pré-construída do Docker Hub ######
+    #image: luisfelipegm/forkup-clean-arch:latest
+    build: .
+    container_name: forkup_clean_arch_app
+    depends_on:
+      - postgres
+    ports:
+      - "${APP_PORT}:3710"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${DB_NAME}
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+    networks:
+      - forkup_network
+
 volumes:
   postgres_data:
 
