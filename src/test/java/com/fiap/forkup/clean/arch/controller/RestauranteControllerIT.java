@@ -1,9 +1,9 @@
 package com.fiap.forkup.clean.arch.controller;
 
-import com.fiap.forkup.clean.arch.core.dto.ItemCardapioResponse;
+import com.fiap.forkup.clean.arch.infra.web.dto.ItemCardapioResponse;
 import com.fiap.forkup.clean.arch.core.dto.Pagina;
-import com.fiap.forkup.clean.arch.core.dto.RestauranteResponseFull;
-import com.fiap.forkup.clean.arch.core.dto.RestauranteResponsePartial;
+import com.fiap.forkup.clean.arch.infra.web.dto.RestauranteResponseFull;
+import com.fiap.forkup.clean.arch.infra.web.dto.RestauranteResponsePartial;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.ItemCardapioJpaEntity;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.RestauranteJpaEntity;
 import com.fiap.forkup.clean.arch.infra.persistence.jpa.entity.UsuarioJpaEntity;

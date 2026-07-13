@@ -8,7 +8,9 @@ import com.fiap.forkup.clean.arch.core.mapper.EnderecoMapper;
 import com.fiap.forkup.clean.arch.core.mapper.ItemCardapioMapper;
 import com.fiap.forkup.clean.arch.core.mapper.RestauranteMapper;
 import com.fiap.forkup.clean.arch.core.usecase.restaurante.*;
-import lombok.AllArgsConstructor;
+import com.fiap.forkup.clean.arch.infra.web.dto.ItemCardapioResponse;
+import com.fiap.forkup.clean.arch.infra.web.dto.RestauranteResponseFull;
+import com.fiap.forkup.clean.arch.infra.web.dto.RestauranteResponsePartial;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;

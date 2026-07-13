@@ -2,7 +2,7 @@ package com.fiap.forkup.clean.arch.core.mapper;
 
 import com.fiap.forkup.clean.arch.core.domain.Endereco;
 import com.fiap.forkup.clean.arch.core.dto.EnderecoRequest;
-import com.fiap.forkup.clean.arch.core.dto.EnderecoResponse;
+import com.fiap.forkup.clean.arch.infra.web.dto.EnderecoResponse;
 
 import java.util.UUID;
 

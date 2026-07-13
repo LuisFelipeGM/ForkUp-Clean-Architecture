@@ -6,6 +6,8 @@ import com.fiap.forkup.clean.arch.core.dto.*;
 import com.fiap.forkup.clean.arch.core.mapper.EnderecoMapper;
 import com.fiap.forkup.clean.arch.core.mapper.UsuarioMapper;
 import com.fiap.forkup.clean.arch.core.usecase.usuario.*;
+import com.fiap.forkup.clean.arch.infra.web.dto.UsuarioResponseFull;
+import com.fiap.forkup.clean.arch.infra.web.dto.UsuarioResponsePartial;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
