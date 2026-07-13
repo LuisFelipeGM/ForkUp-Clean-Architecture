@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -31,6 +32,8 @@ public class UsuarioJpaGateway implements UsuarioGateway {
     private final EnderecoRepository enderecoRepository;
 
     private final UsuarioEntityMapper usuarioEntityMapper;
+
+    private final PasswordEncoder passwordEncoder;
 
 
     @Override
@@ -62,6 +65,7 @@ public class UsuarioJpaGateway implements UsuarioGateway {
         UsuarioJpaEntity usuarioJpa = usuarioEntityMapper.toEntity(usuario);
         EnderecoJpaEntity endereco = enderecoRepository.save(usuarioJpa.getEndereco());
         usuarioJpa.setEndereco(endereco);
+        usuarioJpa.setSenha(passwordEncoder.encode(usuarioJpa.getSenha()));
         usuarioJpa = usuarioRepository.save(usuarioJpa);
 
         log.info("Usuario {} criado com sucesso", usuarioJpa.getLogin());
