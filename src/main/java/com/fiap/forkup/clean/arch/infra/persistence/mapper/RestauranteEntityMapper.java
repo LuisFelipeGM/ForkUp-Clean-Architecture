@@ -28,7 +28,7 @@ public class RestauranteEntityMapper {
                 .cardapio(itemCardapioEntityMapper.toEntityList(restaurante.getCardapio()))
                 .build();
 
-        if (restauranteJpa.getCardapio() != null && !restauranteJpa.getCardapio().isEmpty()) {
+        if (!restauranteJpa.getCardapio().isEmpty()) {
             restauranteJpa.getCardapio().forEach(item -> item.setRestaurante(restauranteJpa));
         }
 
