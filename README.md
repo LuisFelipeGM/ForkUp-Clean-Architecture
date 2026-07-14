@@ -19,7 +19,7 @@ Esta versão do ForkUp foi refeita utilizando os princípios da Clean Architectu
 
 ---
 ## Entregavéis:
-📄 [2 Fase - ForkUp - Tech Challenge.pdf](./2%20Fase%20-%20ForkUp%20-%20Tech%20Challenge.pdf)
+📄 [2 Fase - ForkUp - Tech Challenge.pdf](2%20Fase%20-%20ForkUp%20Clean%20Arch%20-%20Tech%20Challenge.pdf)
 ---
 🎥 [Video Apresentação](https://www.youtube.com/watch?v=41-XF0RFfcE)
 ---
